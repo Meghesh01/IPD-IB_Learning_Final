@@ -1,0 +1,50 @@
+#list123{
+    .list1 {
+		ul {
+			display: flex;
+			list-style: none;
+			padding-top: 0px;
+			li {
+				&:nth-child(2) {
+					margin-left: 150px;
+				}
+				&:nth-child(3) {
+					margin-left: 190px;
+				}
+				&:nth-child(4) {
+					margin-left: 250px;
+				}
+			}
+		}
+	}
+	.list2 {
+		ul {
+			display: flex;
+			list-style: none;
+			padding-top: 6px;
+			li {
+				&:nth-child(2) {
+					margin-left: 150px;
+				}
+				&:nth-child(3) {
+					margin-left: 190px;
+				}
+				&:nth-child(4) {
+					margin-left: 330px;
+				}
+			}
+		}
+	}
+	.list3 {
+		ul {
+			display: flex;
+			list-style: none;
+			padding-top: 6px;
+			li {
+				&:nth-child(2) {
+					margin-left: 90px;
+				}
+			}
+		}
+	}
+}

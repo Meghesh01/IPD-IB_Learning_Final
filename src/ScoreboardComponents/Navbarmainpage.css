@@ -1,0 +1,21 @@
+#nav-item{
+    border-right: 0.5px solid #ffffff;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+#nav1-item{
+  padding-right: 30px;
+  padding-left: 30px;
+}
+.User-logo{
+  width: 30px;
+}
+
+.coins{
+  width: 30px;
+}
+.rupee{
+  width: 15px;
+  vertical-align: middle;
+}

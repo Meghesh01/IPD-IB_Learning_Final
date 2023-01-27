@@ -1,0 +1,27 @@
+#navbar-levels{
+    #nav-item {
+        border-right: 0.5px solid #ffffff;
+        padding-right: 30px;
+        padding-left: 30px;
+      }
+      
+      #nav1-item {
+        padding-right: 30px;
+        padding-left: 30px;
+      }
+      
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+      
+      .User-logo, .coins {
+        width: 30px;
+      }
+      
+      .rupee {
+        width: 15px;
+        vertical-align: middle;
+      }
+}

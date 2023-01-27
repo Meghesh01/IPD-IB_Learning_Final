@@ -1,0 +1,95 @@
+#Level1{
+    $color_1: rgb(16, 58, 87);
+$color_2: rgb(205, 27, 27);
+$background-color_1: rgb(142, 196, 235);
+
+
+box-sizing: border-box;
+overflow: hidden;
+
+@-webkit-keyframes bounce {
+	0%,20%,50%,80%,100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+	}
+	40% {
+		-webkit-transform: translateX(30px);
+		transform: translateX(30px);
+	}
+	60% {
+		-webkit-transform: translateX(15px);
+		transform: translateX(15px);
+	}
+}
+@-moz-keyframes bounce {
+	0%,20%,50%,80%,100% {
+		transform: translateX(0);
+	}
+	40% {
+		transform: translateX(30px);
+	}
+	60% {
+		transform: translateX(15px);
+	}
+}
+@keyframes bounce {
+	0%,20%,50%,80%,100% {
+		-ms-transform: translateX(0);
+		transform: translateX(0);
+	}
+	40% {
+		-ms-transform: translateX(30px);
+		transform: translateX(30px);
+	}
+	60% {
+		-ms-transform: translateX(15px);
+		transform: translateX(15px);
+	}
+}
+
+
+/* Create three equal columns that sits next to each other */
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: $background-color_1;
+	height: 60px;
+}
+li {
+	float: left;
+	display: block;
+	text-align: center;
+	padding: 20px 50px;
+	text-decoration: none;
+	color: $color_1;
+	font-weight: 500;
+}
+#redline {
+	color: $color_2;
+}
+
+.row {
+	display: flex;
+	padding-left: 50px;
+	margin-top: 15px;
+}
+.column {
+	flex: 50%;
+}
+.arrow {
+	cursor: pointer;
+	// position: relative;
+	bottom: -2rem;
+	left: 50%;
+	margin-left: 20px;
+	width: 40px;
+	height: 40px;
+	background-size: contain;
+}
+.bounce {
+	animation: bounce 2s infinite;
+}
+
+}

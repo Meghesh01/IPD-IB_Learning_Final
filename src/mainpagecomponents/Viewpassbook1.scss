@@ -1,0 +1,57 @@
+#view-passbook{
+    background-color: rgb(203, 232, 240);
+
+    .container{
+      min-height: 100vh;
+      width: 100%;
+      background: rgb(203, 232, 240);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+ 
+      .transac {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        text-align: center;
+        margin-top: 10px;
+      }
+      
+      table {
+        position: absolute;
+        z-index: 2;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        box-shadow: 0 2px 15px rgba(64, 64, 64, 0.7);
+        border-radius: 12px 12px 0 0;
+        overflow: hidden;
+      }
+      
+      td {
+        padding: 15px 20px;
+        text-align: center;
+      }
+      
+      th {
+        padding: 15px 20px;
+        text-align: center;
+        background-color: #286f7f;
+        color: #fafafa;
+        font-family: 'Open Sans', Sans-serif;
+        font-weight: 200;
+        text-transform: uppercase;
+      }
+      
+      tr {
+        width: 100%;
+        background-color: #fafafa;
+        font-family: 'Montserrat', sans-serif;
+      
+        &:nth-child(even) {
+          background-color: #eeeeee;
+        }
+      }
+}
