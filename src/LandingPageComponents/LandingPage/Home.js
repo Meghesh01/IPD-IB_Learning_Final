@@ -42,7 +42,7 @@ export default function Home() {
                                 {/* <button onClick={() => (audio.loop = false)}>Pause</button> */}
                             </div>
                             <h2 data-aos="fade-up" data-aos-delay="400">
-                                Hello I am Meghesh New.
+                                Hello I am Meghesh New. tejas os here
                                 We have created an internet banking training platform (in a game format)
                                 which will reduce the hesitation of people to bank through internet.
                                 We help people understand basics of internet banking through our website in a fun way.
