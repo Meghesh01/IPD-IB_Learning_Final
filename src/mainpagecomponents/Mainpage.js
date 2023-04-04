@@ -76,6 +76,7 @@ export default function Mainpage() {
             city : data.data.city,
             state : data.data.state,
             dob : data.data.dob,
+            accountNumber : data.data.accountNumber,
 
         });
         // console.log("Hello");
@@ -128,7 +129,7 @@ export default function Mainpage() {
                                     </li>
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <h6 className="mb-0">{t('acc_no')}</h6>
-                                        <span className="text-secondary">60003200024</span>
+                                        <span className="text-secondary">{user.accountNumber}</span>
                                     </li>
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <h6 className="mb-0">{t('cif_no')}</h6>

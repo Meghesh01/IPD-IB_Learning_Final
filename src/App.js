@@ -9,6 +9,12 @@ import Login from './LoginComponents/Login';
 import LevelsPage from './LandingPageComponents/LevelsPage/LevelsPage';
 import Level1 from './Level1components/Level1';
 import Level2  from './Level2components/Level2';
+import Level3  from './Level3components/Level3';
+import Levelmainapge3 from './Level3components/Levelmainpage3';
+import Level4  from './Level4components/Level4';
+import Levelmainapge4 from './Level4components/Levelmainpage4';
+import Level5  from './Level5components/Level5';
+import Levelmainapge5 from './Level5components/Levelmainpage5';
 import Level6  from './Level6components/Level6';
 import QuickTransfer from './Level2components/QuickTransfer';
 
@@ -49,6 +55,12 @@ function App() {
         <Route path="/LevelsPage" element={<LevelsPage/>} />
         <Route path="/Level1" element={<Level1/>} />
         <Route path="/Level2" element={<Level2/>} />
+        <Route path="/Level3" element={<Level3/>} />
+        <Route path="/Levelmainpage3" element={<Levelmainapge3/>} />
+        <Route path="/Level4" element={<Level4/>} />
+        <Route path="/Levelmainpage4" element={<Levelmainapge4/>} />
+        <Route path="/Level5" element={<Level5/>} />
+        <Route path="/Levelmainpage5" element={<Levelmainapge5/>} />
         <Route path="/Level6" element={<Level6/>} />
         <Route path="/Level7" element={<Level7/>} />
         <Route path="/Level7EnterOTP" element={<Level7EnterOTP/>} />

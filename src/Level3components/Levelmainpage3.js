@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import './Level9.scss';
+import './Levelmainpage3.scss';
 import { Link } from 'react-router-dom';
 
 import bankimg1 from './bankimg1.jpg';
@@ -12,7 +12,7 @@ import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 
-export default function Level9() {
+export default function Levelmainpage3() {
   return (
     <>
       <div id="level-2">
@@ -50,7 +50,7 @@ export default function Level9() {
           <section style={{ marginTop: 60 }} >
             <ul className='nav-2'>
               <li><a className="active" href="/">MY PROFILE</a></li>
-              <li><a href="#">ADD BENEFICIARY</a></li>
+              <li><a href="/level3">ADD BENEFICIARY</a></li>
               <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="/" data-bs-toggle="dropdown">  PAYMENTS/TRANSFER  </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item2" href="#"> Quick Transfer</a></li>
@@ -61,8 +61,8 @@ export default function Level9() {
               <li><a href="/">CARDS</a></li>
               <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="/" data-bs-toggle="dropdown"> BILL PAYMENTS </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item2" href="/TopUpRecharge">TopUp Recharge</a></li>
-                  <li><a class="dropdown-item2" href="/ElectricityBill">Electricity Bill</a></li>
+                  <li><a class="dropdown-item2" href="#">TopUp Recharge</a></li>
+                  <li><a class="dropdown-item2" href="#">Electricity Bill</a></li>
                   {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
                 </ul>
               </li>

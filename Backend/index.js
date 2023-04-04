@@ -12,6 +12,11 @@ app.use(express.json());
 
 // We link the route files to make our route easy
 app.use(require('./router/auth'));
+app.use(require('./router/level1'));
+app.use(require('./router/level2'));
+app.use(require('./router/level3'));
+app.use(require('./router/level4'));
+
 
 const PORT = process.env.PORT;
 

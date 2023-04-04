@@ -10,7 +10,7 @@ const User = require('../models/userSchema');
 // Using async-await
 router.post("/register", async (req, res) => {
   // get the data sent by user
-  const { name, email, phone, city, state, dob } = req.body;
+  const { name, email, phone, city, state, dob ,accountNumber} = req.body;
 
   // Validation
   if (!name || !email || !phone || !city || !state || !dob) {
@@ -26,7 +26,7 @@ router.post("/register", async (req, res) => {
     if (userExist) {
       return res.status(422).json({ error: "Phone number already exists" });
     } else {
-      const user = new User({ name, email, phone, city, state, dob});
+      const user = new User({ name, email, phone, city, state, dob,accountNumber});
 
       await user.save();
 

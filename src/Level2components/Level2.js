@@ -92,11 +92,11 @@ export default function Level2() {
     <section style={{ marginTop: 60 }} >
         <ul className='nav-2'>
             <li><a className="active" href="/">{t('my_profile')}</a></li>
-            <li><a href="/">{t('add_beneficiary')}</a></li>
+            <li><a href="/level3">{t('add_beneficiary')}</a></li>
             <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">  {t('pay_trans')}  </a>
             <ul class="dropdown-menu">
 			  <li><a class="dropdown-item2" href="/QuickTransfer"> {t('quick_trans')}</a></li>
-			  <li><a class="dropdown-item2" href="#"> {t('trans_bene')}</a></li>
+			  <li><a class="dropdown-item2" href="/level4"> {t('trans_bene')}</a></li>
 			  {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
 		    </ul>
         </li> 
@@ -144,5 +144,3 @@ export default function Level2() {
    
   )
 }
-
-

@@ -27,9 +27,29 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    accountNumber: {
+        type: String,
+        unique: true
+    },
   
-})
+});
 
+userSchema.pre("save", async function (next) {
+    if (!this.accountNumber) {
+      // Generate 10-digit account number
+      let newAccountNumber = generateAccountNumber();
+      // Ensure account number is unique
+      while (await User.exists({ accountNumber: newAccountNumber })) {
+        newAccountNumber = generateAccountNumber();
+      }
+      this.accountNumber = newAccountNumber;
+    }
+    next();
+  });
+  
+  function generateAccountNumber() {
+    return Math.floor(Math.random() * 9000000000 + 1000000000).toString();
+  }
 // Hashing password
 // Call this method when save method is called
 // userSchema.pre('save', async function (next) {
@@ -57,4 +77,5 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('users', userSchema);
 
 module.exports = User;
+
 
