@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Styles/Mainpage1.scss';
-import Navbarmainpage from './Navbarmainpage';
+import Navbarmainpage from '../../mainpagecomponents/Navbarmainpage';
 
 import Level from './Level';
 

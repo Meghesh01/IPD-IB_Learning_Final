@@ -1,10 +1,51 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import './Login1.scss'
 import { Navigate, useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
+// Multilingual
+import { createRoot } from 'react-dom/client';
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+import tEn from '../Languages/en/translation.json';
+import tHi from '../Languages/hi/translation.json';
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    // the translations
+    // (tip move them in a JSON file and import them,
+    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
+    resources: {
+      en: {
+        translation: tEn
+      },
+      hi: {
+        translation: tHi
+      }
+    },
+    lng: "en", // if you're using a language detector, do not define the lng option
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    }
+  });
+const changeLang = (l) =>{
+  return () =>{
+    // alert('Ok ' + l);
+    // Now change the language
+    i18n.changeLanguage(l);
+    localStorage.setItem('lang',l);
+  }
+}
 
 export default function Login() {
+  const { t } = useTranslation();
+  useEffect(() => {
+    let currentLang = localStorage.getItem('lang');
+    i18n.changeLanguage(currentLang);
+  }, []);
   const navigate = useNavigate()
   const [user, setUser] = useState({
     name: "",
@@ -99,18 +140,18 @@ export default function Login() {
      <div id="login-page">
      <div className={signup ? "cont":"cont s-signup" }>
     <div className="form sign-in">
-      <h2>Sign In</h2>
+      <h2>{t('signin')}</h2>
       <label>
-        <span>Phone Number</span>
+        <span>{t('phone_no')}</span>
         <input type="tel" name="phone"  onChange={handleInput1}/>
       </label>
     
       {/* <Link to="/Mainpage"><button className="submit" type="button">Sign In</button></Link> */}
       <button className="submit" type="button" onClick={loginData}>
-              Sign In
+      {t('signin')}
             </button>
 
-      <p className="forgot-pass">Forgot Password ?</p>
+      <p className="forgot-pass">{t('forgot_pwd')}</p>
 
       
     </div>
@@ -118,26 +159,26 @@ export default function Login() {
     <div className="sub-cont">
       <div className="img">
         <div className="img-text m-up">
-          <h2>New here?</h2>
-          <p>Sign up and discover great amount of new opportunities!</p>
+          <h2>{t('newhere')}</h2>
+          <p>{t('signup_text1')}</p>
         </div>
         <div className="img-text m-in">
-          <h2>One of us?</h2>
-          <p>If you already has an account, just sign in. We've missed you!</p>
+          <h2>{t('signin_text1')}</h2>
+          <p>{t('signin_text2')}</p>
         </div>
         <div className="img-btn" onClick={toggleSignup}>
-          <span className="m-up">Sign Up</span>
-          <span className="m-in">Sign In</span>
+          <span className="m-up">{t('signup')}</span>
+          <span className="m-in">{t('signin')}</span>
         </div>
       </div>
       <div className="form sign-up">
-        <h2>Sign Up</h2>
+        <h2>{t('signup')}</h2>
         <label>
-          <span>Name</span>
+          <span>{t('name')}</span>
           <input type="text" name="name"  onChange={handleInput}/>
         </label>
         <label>
-          <span>Email</span>
+          <span>{t('email')}</span>
           <input type="email" name="email"  onChange={handleInput}/>
         </label>
         {/* <label>
@@ -145,16 +186,16 @@ export default function Login() {
           <input type="password"/>
         </label> */}
         <label>
-          <span>Phone No</span>
+          <span>{t('phone_no')}</span>
           <input type="number" name="phone"  onChange={handleInput}/>
         </label>
         <label>
-          <span>Date of birth</span>
+          <span>{t('dob')}</span>
           <input type="date" name="dob" onChange={handleInput}/>
         </label>
         
         <label>
-          <span>City</span>
+          <span>{t('city')}</span>
           <input type="text" name="city" onChange={handleInput}/>
         </label>
         {/* <label>
@@ -162,14 +203,13 @@ export default function Login() {
           <input type="text"/>
         </label> */}
         <label>
-          <span>State</span>
+          <span>{t('state')}</span>
           <input type="text" name="state" onChange={handleInput}/>
         </label>
       
         <button type="button" className="submit" onClick={postData}>
-                Sign Up Now
-              </button>
-
+        {t('signup')}
+        </button>
       </div>
     </div>
   </div>

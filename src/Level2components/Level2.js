@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,7 +13,48 @@ import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 
+// Multilingual
+import { createRoot } from 'react-dom/client';
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+import tEn from '../Languages/en/translation.json';
+import tHi from '../Languages/hi/translation.json';
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    // the translations
+    // (tip move them in a JSON file and import them,
+    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
+    resources: {
+      en: {
+        translation: tEn
+      },
+      hi: {
+        translation: tHi
+      }
+    },
+    lng: "en", // if you're using a language detector, do not define the lng option
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    }
+  });
+const changeLang = (l) =>{
+  return () =>{
+    // alert('Ok ' + l);
+    // Now change the language
+    i18n.changeLanguage(l);
+    localStorage.setItem('lang',l);
+  }
+}
+
 export default function Level2() {
+  const { t } = useTranslation();
+  useEffect(() => {
+    let currentLang = localStorage.getItem('lang');
+    i18n.changeLanguage(currentLang);
+  }, []);
   return (
     <>
     <div id="level-2">
@@ -22,18 +64,18 @@ export default function Level2() {
       <Container>
         <Navbar.Brand href="#home">
         <img src={sbilogo} className="sbi-logo" alt="sbi" style={{height : 40 , marginRight: 7}}/>
-              <b>BANK ONLINE</b></Navbar.Brand>
+              <b>{t('bank_online')}</b></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav" className="mx-5 justify-content-end">
           <Nav className="mx-9 fw-bold">
-          <Nav.Link href="#home">Home</Nav.Link>
-            <NavDropdown title="Language" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Hindi</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1">English</NavDropdown.Item>
+          <Nav.Link href="#home">{t('home')}</Nav.Link>
+            <NavDropdown title={t('language')} id="basic-nav-dropdown">
+            <NavDropdown.Item href="#action/3.1" onClick={changeLang('hi')}>{t('hindi')}</NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.1" onClick={changeLang('en')}>{t('english')}</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="/Levelspage">
             <img src={logoutlogo} className="logout-logo" alt="log-out" style={{height : 30 , marginRight: 7}}/>
-            <b> Logout </b></Nav.Link>
+            <b> {t('logout')} </b></Nav.Link>
             {/* <Link to="/Levelspage">
             
               <img src={logoutlogo} className="logout-logo" alt="log-out" style={{height : 30 , marginRight: 7}}/>
@@ -49,31 +91,31 @@ export default function Level2() {
 
     <section style={{ marginTop: 60 }} >
         <ul className='nav-2'>
-            <li><a className="active" href="/">MY PROFILE</a></li>
-            <li><a href="/">ADD BENEFICIARY</a></li>
-            <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">  PAYMENTS/TRANSFER  </a>
+            <li><a className="active" href="/">{t('my_profile')}</a></li>
+            <li><a href="/">{t('add_beneficiary')}</a></li>
+            <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">  {t('pay_trans')}  </a>
             <ul class="dropdown-menu">
-			  <li><a class="dropdown-item2" href="/QuickTransfer"> Quick Transfer</a></li>
-			  <li><a class="dropdown-item2" href="#"> Transfer Beneficiary</a></li>
+			  <li><a class="dropdown-item2" href="/QuickTransfer"> {t('quick_trans')}</a></li>
+			  <li><a class="dropdown-item2" href="#"> {t('trans_bene')}</a></li>
 			  {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
 		    </ul>
         </li> 
-            <li><a href="/">CARDS</a></li>
-            <li><a href="/">BILL PAYMENTS</a></li>
-            <li><a href="/">BE SAFE</a></li>
-            <li><a href="/">PERSONAL LOAN</a></li>
+            <li><a href="/">{t('card')}</a></li>
+            <li><a href="/">{t('bill_pay')}</a></li>
+            <li><a href="/">{t('be_safe')}</a></li>
+            <li><a href="/">{t('per_loan')}</a></li>
         </ul>
 
-        <p style={{textAlign : 'center' , fontSize : 20, marginTop : 10}}><b>WELCOME ! MEGHESH NANDKUMAR NAGPURE</b></p>
+        <p style={{textAlign : 'center' , fontSize : 20, marginTop : 10}}><b>{t('greeting')}</b></p>
     </section>
     <section>
-    <p style={{textAlign : 'center', fontSize : 17 }}><b>TRANSACTION ACCOUNT : </b></p>
+    <p style={{textAlign : 'center', fontSize : 17 }}><b>{t('transaction_acc')}</b></p>
     <table>
         <tr>
-            <th>Account no.</th>
-            <th>Branch</th>
-            <th>Available Balance</th>
-            <th>Account Statement</th>
+            <th>{t('acc_no')}</th>
+            <th>{t('branch')}</th>
+            <th>{t('available_bal')}</th>
+            <th>{t('acc_statement')}</th>
         </tr>
         <tr>
             <td>60003200024</td>

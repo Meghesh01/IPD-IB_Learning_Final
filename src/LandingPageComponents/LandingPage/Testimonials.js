@@ -19,10 +19,49 @@ import test2 from '../images/Landing\ Page\ images/testimonials/testimonials-2.j
 import test3 from '../images/Landing\ Page\ images/testimonials/testimonials-3.jpg'
 import test4 from '../images/Landing\ Page\ images/testimonials/testimonials-4.jpg'
 
+// Multilingual
+import { createRoot } from 'react-dom/client';
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+import tEn from '../../Languages/en/translation.json';
+import tHi from '../../Languages/hi/translation.json';
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    // the translations
+    // (tip move them in a JSON file and import them,
+    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
+    resources: {
+      en: {
+        translation: tEn
+      },
+      hi: {
+        translation: tHi
+      }
+    },
+    lng: "en", // if you're using a language detector, do not define the lng option
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    }
+  });
+const changeLang = (l) =>{
+  return () =>{
+    // alert('Ok ' + l);
+    // Now change the language
+    i18n.changeLanguage(l);
+    localStorage.setItem('lang',l);
+  }
+}
+
 SwiperCore.use([Navigation,Pagination,Scrollbar])
 
 export default function Testimonials() {
+    const { t } = useTranslation();
     useEffect(() => {
+        let currentLang = localStorage.getItem('lang');
+        i18n.changeLanguage(currentLang);
         AOS.init();
         AOS.refresh();
       }, []);
@@ -33,7 +72,7 @@ export default function Testimonials() {
             <div className="container" data-aos="fade-up">
 
                 <header className="section-header">
-                    <p>Happy Learners</p>
+                    <p>{t('happylearners')}</p>
                 </header>
 
                 <div data-aos="fade-up" data-aos-delay="200">

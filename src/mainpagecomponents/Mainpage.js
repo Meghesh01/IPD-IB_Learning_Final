@@ -3,7 +3,49 @@ import './Mainpage1.scss';
 import Navbarmainpage from './Navbarmainpage';
 import { Link, useLocation } from 'react-router-dom';
 
+// Multilingual
+import { createRoot } from 'react-dom/client';
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+import tEn from '../Languages/en/translation.json';
+import tHi from '../Languages/hi/translation.json';
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    // the translations
+    // (tip move them in a JSON file and import them,
+    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
+    resources: {
+      en: {
+        translation: tEn
+      },
+      hi: {
+        translation: tHi
+      }
+    },
+    lng: "en", // if you're using a language detector, do not define the lng option
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
+    }
+  });
+const changeLang = (l) =>{
+  return () =>{
+    // alert('Ok ' + l);
+    // Now change the language
+    i18n.changeLanguage(l);
+    localStorage.setItem('lang',l);
+  }
+}
+
+
 export default function Mainpage() {
+    const { t } = useTranslation();
+    useEffect(() => {
+        let currentLang = localStorage.getItem('lang');
+        i18n.changeLanguage(currentLang);
+    }, []);
     const [user, setUser] = useState({})
     const date = new Date();
     // let phone = 9867075589;
@@ -66,15 +108,15 @@ export default function Mainpage() {
                                             width="150" />
                                         <div className="mt-3">
                                             <h4>{user.name}</h4>
-                                            <p className="text-secondary mb-1">Student at IB Learning</p>
+                                            <p className="text-secondary mb-1">{t('mainpage_t1')}</p>
                                             <p className="text-muted font-size-sm">{user.city},{user.state}</p>
                                             <Link to="/LevelsPage">
-                                            <button type="button" class="btn btn-success mx-2">Start</button>
+                                            <button type="button" class="btn btn-success mx-2">{t('start')}</button>
                                             </Link>
                                             <Link to="/">
-                                            <button type="button" class="btn btn-danger mx-2">Logout</button>
+                                            <button type="button" class="btn btn-danger mx-2">{t('logout')}</button>
                                             </Link>
-                                            <button type="button" class="btn btn-primary mx-2">Upload Photo</button>
+                                            <button type="button" class="btn btn-primary mx-2">{t('uploadphoto')}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -82,27 +124,27 @@ export default function Mainpage() {
                             <div className="card mt-3">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h3 className="mb-0"><b>Account Details</b></h3>
+                                        <h3 className="mb-0"><b>{t('acc_det')}</b></h3>
                                     </li>
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 className="mb-0">Account Number:</h6>
+                                        <h6 className="mb-0">{t('acc_no')}</h6>
                                         <span className="text-secondary">60003200024</span>
                                     </li>
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 className="mb-0">CIF Number:</h6>
+                                        <h6 className="mb-0">{t('cif_no')}</h6>
                                         <span className="text-secondary">SBINI004</span>
                                     </li>
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                        <h6 className="mb-0">Your Bank: </h6>
-                                        <span className="text-secondary">State Bank of India</span>
+                                        <h6 className="mb-0">{t('your_bank')}</h6>
+                                        <span className="text-secondary">{t('bank')}</span>
                                     </li>
                                     <li className="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         <div class="d-grid gap-2 col-10 mx-auto">
                                             <Link to="/Viewpassbook">
-                                                <button class="button-39">View Passbook</button>
+                                                <button class="button-39">{t('view_pb')}</button>
                                             </Link>
                                             <Link to="/Viewdebitcard">
-                                                <button class="button-40">View Virtual Debit Card</button>
+                                                <button class="button-40">{t('view_db')}</button>
                                             </Link>
                                         </div>
                                     </li>
@@ -114,13 +156,13 @@ export default function Mainpage() {
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-sm-center">
-                                            <h3 className="mb-0"><b>PROFILE DETAILS</b></h3>
+                                            <h3 className="mb-0"><b>{t('prof_det')}</b></h3>
                                         </div>
                                     </div>
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">Full Name</h6>
+                                            <h6 className="mb-0">{t('full_name')}</h6>
                                         </div>
                                         <div className="col-sm-9 ">
                                             {user.name}
@@ -129,7 +171,7 @@ export default function Mainpage() {
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">Mobile</h6>
+                                            <h6 className="mb-0">{t('mob')}</h6>
                                         </div>
                                         <div className="col-sm-9 ">
                                             {user.phone}
@@ -138,7 +180,7 @@ export default function Mainpage() {
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">Email</h6>
+                                            <h6 className="mb-0">{t('email')}</h6>
                                         </div>
                                         <div className="col-sm-9 ">
                                            {user.email}
@@ -150,13 +192,13 @@ export default function Mainpage() {
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-sm-center">
-                                            <h3 className="mb-0"><b>ADDITIONAL DETAILS</b></h3>
+                                            <h3 className="mb-0"><b>{t('add_det')}</b></h3>
                                         </div>
                                     </div>
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">Date of Birth</h6>
+                                            <h6 className="mb-0">{t('dob')}</h6>
                                         </div>
                                         <div className="col-sm-9 ">
 
@@ -167,7 +209,7 @@ export default function Mainpage() {
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">Age</h6>
+                                            <h6 className="mb-0">{t('age')}</h6>
                                         </div>
                                         <div className="col-sm-9 ">
                                             {date.getFullYear()-new Date(user.dob).getFullYear()}
@@ -176,7 +218,7 @@ export default function Mainpage() {
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">City / Village / Town</h6>
+                                            <h6 className="mb-0">{t('cvt')}</h6>
                                         </div>
                                         <div className="col-sm-9 ">
                                             {user.city}
@@ -194,7 +236,7 @@ export default function Mainpage() {
                                     <hr />
                                     <div className="row">
                                         <div className="col-sm-3">
-                                            <h6 className="mb-0">State</h6>
+                                            <h6 className="mb-0">{t('state')}</h6>
                                         </div>
                                         <div className="col-sm-9">
                                          {user.state}
