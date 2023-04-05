@@ -1,8 +1,9 @@
 import React from 'react'
-import '../Styles/Buttons1.css'
-import '../Styles/Buttons2.css'
+import './Level.scss'
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react'
+import coins from '../images/Navbar images/coins.png'
+import Navbarmainpage from '../../mainpagecomponents/Navbarmainpage';
 
 // Multilingual
 import { createRoot } from 'react-dom/client';
@@ -31,101 +32,264 @@ i18n
       escapeValue: false // react already safes from xss => https://www.i18next.com/translation-function/interpolation#unescape
     }
   });
-const changeLang = (l) =>{
-  return () =>{
+const changeLang = (l) => {
+  return () => {
     // alert('Ok ' + l);
     // Now change the language
     i18n.changeLanguage(l);
-    localStorage.setItem('lang',l);
+    localStorage.setItem('lang', l);
   }
 }
 
 export default function Level() {
   const { t } = useTranslation();
-    useEffect(() => {
-        let currentLang = localStorage.getItem('lang');
-        i18n.changeLanguage(currentLang);
-      }, []);
+  useEffect(() => {
+    let currentLang = localStorage.getItem('lang');
+    i18n.changeLanguage(currentLang);
+  }, []);
   return (
     <>
+      <div id="levelspagenew">
+        <Navbarmainpage />
+        <div className="container">
+          <h1 className='levelselection'>{t('level_selection')}</h1>
+          <div className='levels'>
+            <Link to="/Level1" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>1</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Login</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
+            </Link>
 
-      <div className="container">
-        <h1 className='levelselection'>{t('level_selection')}</h1>
-        <div className=' row'>
-          <div className="col">
-            <Link to="/Level1">
-              <button class="button-29" role="button">1</button>
-            </Link>
-          </div>
-          <div className="col">
-            <Link to="/Level2">
-              <button class="button-29" role="button">2</button>
+            <Link to="/Level2" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>2</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Quick Transfer</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
 
-          </div>
-          <div className="col">
-            
-            <Link to="/Levelmainpage3">
-              <button class="button-29" role="button">3</button>
+
+            <Link to="/Levelmainpage3" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>3</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Add Beneficiary</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-          <div className="col">
-          <Link to="/Levelmainpage4">
-              <button class="button-29" role="button">4</button>
+
+
+            <Link to="/Levelmainpage4" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>4</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Payment To Beneficiary</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-          <div className="col">
-            <Link to="/Test1">
-              <button class="button-82" role="button">{t('test')}</button>
+
+
+            <Link to="/Levelmainpage5" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>5</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Generate A/C statement</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-        </div>
-        <div className='row'>
-          <div className="col">
-          <Link to="/Levelmainpage5">
-              <button class="button-29" role="button">5</button>
+
+
+            <Link to="/Test1" className="quizz">
+              <div>Quiz 1</div>
             </Link>
-          </div>
-          <div className="col">
-            <Link to="/Level6">
-              <button class="button-29" role="button">6</button>
+
+
+            <Link to="/Level6" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>6</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Apply for Virtual Debit Card</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-          <div className="col">
-            <Link to="/Level7">
-              <button class="button-29" role="button">7</button>
+
+            <Link to="/Level7" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>7</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Debit Card Activation</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-          <div className="col">
-          <Link to="/Level8">
-              <button class="button-29" role="button">8</button>
+
+
+            <Link to="/Level8" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>8</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Shopping Payment Using Debit Card</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-          <div className="col">
-            <Link to="/Test2">
-              <button class="button-82" role="button">{t('test')}</button>
+
+
+            <Link to="/Level9" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>9</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Perform Bill Payments</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-        </div>
-        <div className=' row'>
-          <div className="col">
-            <Link to="/Level9">
-              <button class="button-29" role="button">9</button>
+
+
+            <Link to="/Level10" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>10</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Beware Of Fraudsters</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-          <div className="col">
-            <Link to="/Level10">
-              <button class="button-29" role="button">10</button>
+
+            <Link to="/Test2" className="quizz">
+              <div>Quiz 2</div>
             </Link>
-          </div>
-          <div className="col">
-            <button class="button-29" role="button">11</button>
-          </div>
-          <div className="col">
-            <button class="button-29" role="button">12</button>
-          </div>
-          <div className='col'>
-            <button class="button-82" role="button">{t('test')}</button>
+
           </div>
         </div>
       </div>

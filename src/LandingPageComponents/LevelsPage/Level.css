@@ -1,0 +1,122 @@
+body{
+    background-color: black;
+}
+.levelselection {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 70px;
+    margin-top: 7rem;
+    color: wheat;
+}
+
+.User-logo,
+.coins {
+    width: 30px;
+}
+
+.rupee {
+    width: 15px;
+    vertical-align: middle;
+}
+
+.levels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level {
+    height: 7rem;
+    width: 70rem;
+    margin: 1.5rem;
+    border-radius: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid black;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    transition: box-shadow .20s, transform .20s;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+}
+
+.level:focus {
+    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.level:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-9px);
+}
+
+.level:active {
+    box-shadow: #3c4fe0 0 3px 7px inset;
+    transform: translateY(9px);
+}
+
+.part {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    width: 25%;
+}
+
+.parthead {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: "JetBrains Mono", monospace;
+    text-shadow: 6px 6px 15px black;
+    color: wheat;
+}
+
+.parttext {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.plus {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.7rem;
+}
+
+.quizz{
+    height: 7rem;
+    width: 40%;
+    margin: 2rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    background-color: rgb(75, 223, 75);
+    color: wheat;
+    transition: box-shadow .15s, transform .15s;
+    font-size: 2.7rem;
+    font-weight: 700;
+    font-family: "JetBrains Mono", monospace;
+    text-shadow: 6px 6px 15px black;
+    text-decoration: none;
+}
+
+
+.quizz:focus {
+    box-shadow: #1f1f21 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #000000 0 -3px 0 inset;
+}
+
+.quizz:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0 4px 8px, rgba(0, 0, 0, 0.3) 0 7px 13px -3px, #000000 0 -3px 0 inset;
+    transform: translateY(-9px);
+}
+
+.quizz:active {
+    box-shadow: #000000 0 3px 7px inset;
+    transform: translateY(9px);
+}
