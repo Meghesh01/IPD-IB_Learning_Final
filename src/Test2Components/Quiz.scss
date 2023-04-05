@@ -1,0 +1,130 @@
+#quiz1{
+    $color_1: white;
+$color_2: #ffffff;
+$background-color_1: #7cc6fe;
+$background-color_2: #252d4a;
+$background-color_3: #60e060;
+$background-color_4: #555e7d;
+$background-color_5: #234668;
+
+/* .score-section {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
+/* ANSWERS/RIGHT SECTION */
+background-color: $background-color_1;
+flex-direction: column;
+width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	color: $color_1;
+.quizHead {
+    width: 48rem;
+	display: flex;
+	justify-content: center;
+	background-color: $background-color_2;
+	border-radius: 15px;
+	margin: 1rem;
+	align-items: center;
+}
+.app {
+	background-color: $background-color_2;
+	width: 50rem;
+	min-height: 500px;
+	height: min-content;
+	border-radius: 15px;
+	padding: 20px;
+	box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+}
+.first-part {
+	display: flex;
+	justify-content: space-evenly;
+	height: 24rem;
+}
+.inside1 {
+	height: 11rem;
+	margin-top: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+.inside2 {
+	margin-top: 3rem;
+	display: flex;
+	justify-content: center;
+	button {
+		background-color: $background-color_1;
+		display: flex;
+		justify-content: center;
+		width: 20rem;
+        margin: 0.5rem;
+	}
+}
+.question-section {
+	width: 100%;
+	margin-top: 1rem;
+	position: relative;
+}
+.question-count {
+	margin-bottom: 20px;
+	span {
+		font-size: 28px;
+	}
+}
+.question-text {
+	margin-bottom: 12px;
+}
+.answer-section {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 3rem;
+	margin-top: 1rem;
+}
+button {
+	width: 100%;
+	font-size: 16px;
+	color: $color_2;
+	background-color: $background-color_2;
+	border-radius: 15px;
+	display: flex;
+	padding: 5px;
+	justify-content: flex-start;
+	align-items: center;
+	border: 5px solid #234668;
+	cursor: pointer;
+	&:hover {
+		background-color: $background-color_4;
+	}
+	&:focus {
+		outline: none;
+	}
+	svg {
+		margin-right: 5px;
+	}
+}
+.correct {
+	background-color: $background-color_3;
+}
+.actions {
+	display: flex;
+	margin-top: 15px;
+	button {
+		background-color: $background-color_1;
+		justify-content: center;
+		margin: 0.5rem;
+		&:hover {
+			background-color: $background-color_5;
+			color: $color_1;
+		}
+	}
+}
+
+}

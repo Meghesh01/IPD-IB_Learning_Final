@@ -35,6 +35,9 @@ import ElectricityBill from './Level9components/ElectricityBill';
 import Level10 from './Level10components/Level10';
 import BeSafe from './Level10components/BeSafe';
 
+import Test1 from './Test1Components/Quiz';
+import Test2 from './Test2Components/Quiz';
+
 import {
   Routes,
   Route,
@@ -77,6 +80,9 @@ function App() {
 
         <Route path="/Level10" element={<Level10/>} />
         <Route path="/BeSafe" element={<BeSafe/>} />
+
+        <Route path="/Test1" element={<Test1/>} />
+        <Route path="/Test2" element={<Test2/>} />
 
 
         

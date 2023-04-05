@@ -1,0 +1,136 @@
+body {
+  background-color: #7cc6fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+}
+
+.quizHead {
+  display: flex;
+  justify-content: center;
+  background-color: #252d4a;
+  border-radius: 15px;
+  margin: 1rem;
+  align-items: center;
+}
+
+.app {
+  background-color: #252d4a;
+  width: 50rem;
+  min-height: 500px;
+  height: min-content;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+}
+
+.first-part {
+  display: flex;
+  justify-content: space-evenly;
+  height: 24rem;
+}
+
+/* .score-section {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
+.inside1 {
+  height: 11rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inside2 {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.inside2 button {
+  background-color: #7cc6fe;
+  display: flex;
+  justify-content: center;
+  width: 35rem;
+}
+
+.question-section {
+  width: 100%;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.question-count {
+  margin-bottom: 20px;
+}
+
+.question-count span {
+  font-size: 28px;
+}
+
+.question-text {
+  margin-bottom: 12px;
+}
+
+/* ANSWERS/RIGHT SECTION */
+.answer-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+button {
+  width: 100%;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #252d4a;
+  border-radius: 15px;
+  display: flex;
+  padding: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 5px solid #234668;
+  cursor: pointer;
+}
+
+.correct {
+  background-color: #60e060;
+}
+
+button:hover {
+  background-color: #555e7d;
+}
+
+button:focus {
+  outline: none;
+}
+
+button svg {
+  margin-right: 5px;
+}
+
+.actions {
+  display: flex;
+  margin-top: 15px;
+}
+
+.actions button {
+  background-color: #7cc6fe;
+  justify-content: center;
+  margin: 0.5rem;
+}
+
+.actions button:hover {
+  background-color: #234668;
+  color: white;
+}

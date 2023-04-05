@@ -74,8 +74,10 @@ export default function Level() {
               <button class="button-29" role="button">4</button>
             </Link>
           </div>
-          <div className='col'>
-            <button class="button-82" role="button">{t('test')}</button>
+          <div className="col">
+            <Link to="/Test1">
+              <button class="button-82" role="button">{t('test')}</button>
+            </Link>
           </div>
         </div>
         <div className='row'>
@@ -99,8 +101,10 @@ export default function Level() {
               <button class="button-29" role="button">8</button>
             </Link>
           </div>
-          <div className='col'>
-            <button class="button-82" role="button">{t('test')}</button>
+          <div className="col">
+            <Link to="/Test2">
+              <button class="button-82" role="button">{t('test')}</button>
+            </Link>
           </div>
         </div>
         <div className=' row'>
