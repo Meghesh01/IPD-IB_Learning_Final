@@ -80,6 +80,8 @@ function MyVerticallyCenteredModal(props) {
     </Modal>
   );
 }
+
+
 export default function QuickTransfer() {
   const audio5 = new Audio(L2_completedaudio);
   const [modalShow, setModalShow] = React.useState(false);
@@ -161,7 +163,7 @@ export default function QuickTransfer() {
           <ul>
             <li>
               <input type="radio" id="html" name="fav_language" value="HTML" />{" "}
-              60003200024
+              2036155608
             </li>
             <li>Savings</li>
             <li>Vile parle</li>
@@ -176,7 +178,7 @@ export default function QuickTransfer() {
             <li>
               <b>Selected account number :</b>
             </li>
-            <li>60003200024</li>
+            <li>2036155608</li>
           </ul>
         </div>
         <div className="list4">
@@ -222,7 +224,7 @@ export default function QuickTransfer() {
           <ul>
             <li>
               <input type="radio" id="html" name="fav_language" value="HTML" />{" "}
-              60003200024
+              12345670
             </li>
             <li>Savings</li>
             <li>Vile parle</li>
@@ -279,10 +281,7 @@ export default function QuickTransfer() {
                 className="button-87"
                 style={{ width: "100px", marginRight: "10px" }}
                 onClick={(e) => {
-                  e.preventDefault();
-                  setModalShow(true);
-                  audio5.loop = false;
-                  audio5.play();
+                  window.alert("Successful Transfer to a beneficiary");
                 }}
               >
                 Submit

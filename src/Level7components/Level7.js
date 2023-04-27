@@ -77,15 +77,15 @@ export default function Level7() {
          <div className="row">
             <div className="col-12">
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
-                  <span> <Link to="/Level7EnterOTP"><input id='radio' type="radio" class="option-input radio" name="example" /></Link>  Using One Time Password(OTP)</span> 
+                  <span> <Link to="/Level7EnterOTP"><input id='radio' type="radio" class="option-input radio" name="example" /></Link>  Using Profile password</span> 
                </div>
             </div>
             
-            <div className="col-12">
+            {/* <div className="col-12">
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
                   <span><input id='radio-1' type="radio" class="option-input radio" name="example" />  Using Profile Password</span> 
                </div>
-            </div>
+            </div> */}
             
          </div>
          

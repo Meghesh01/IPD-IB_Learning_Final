@@ -27,6 +27,14 @@ const userSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
+    points:{
+        type:Number,
+        default:0
+    },
+    money:{
+        type:Number,
+        default:10000
+    },
     accountNumber: {
         type: String,
         unique: true

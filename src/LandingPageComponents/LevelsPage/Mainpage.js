@@ -1,11 +1,18 @@
 import React from 'react'
 import Level from './Level';
+import Navbarmainpage from './Navbarmainpage';
 
-export default function Mainpage() {
+// import Navbarmainpage from '../LevelsPage/Navbarmainpage';
+
+export default function Mainpage(props) {
     return (
         <>
             <div id="levels-mainpage">
-                <Level/>
+            <Navbarmainpage phone = {props.phone} />
+            {/* <Navbarmainpage/> */}
+            <div className="container">
+                <Level phone = {props.phone} />
+            </div>
             </div>
         </>
     )

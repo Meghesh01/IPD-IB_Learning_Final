@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import sbilogo from "./sbi-logo.png";
 import logoutlogo from "./logout.png";
 import rupeeblack from "../images/rupeeblack.png";
-
+import { useLocation } from "react-router-dom";
 // Multilingual
 import { createRoot } from "react-dom/client";
 import i18n from "i18next";
@@ -18,6 +18,7 @@ import { useTranslation, initReactI18next } from "react-i18next";
 import tEn from "../Languages/en/translation.json";
 import tHi from "../Languages/hi/translation.json";
 import { useNavigate } from "react-router-dom";
+
 i18n
 
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -49,7 +50,7 @@ const changeLang = (l) => {
   };
 };
 
-export default function QuickTransfer() {
+export default function QuickTransfer(props) {
   const { t } = useTranslation();
   useEffect(() => {
     let currentLang = localStorage.getItem("lang");
@@ -63,7 +64,7 @@ export default function QuickTransfer() {
   };
 
 
-  const navigate = useNavigate();
+  
 
 
   const [level2, setLevel2] = useState({
@@ -81,9 +82,9 @@ export default function QuickTransfer() {
 
     setLevel2({ ...level2, [name]: value });
   };
-
+  const navigate = useNavigate();
   const PostData = async (e) => {
-     alert("Hi");
+    //  alert("Hi");
     console.log("HI");
     const { accountnumber, beneficiaryname, beneficiaryaccountnumber, amount } =
       level2;
@@ -109,12 +110,60 @@ export default function QuickTransfer() {
       window.alert("Invalid registration");
       console.log("Invalid registration");
     } else {
-      // window.alert("Successful Registration");
+      window.alert("Successful QuickTransfer");
       console.log("Successful registration");
 
-      navigate("/Levelspage");
+      // navigate("/Levelspage",{state: {phone:phone}});
     }
   };
+  const [user, setUser] = useState({});
+  const date = new Date();
+  // let phone = 9867075589;
+  const location = useLocation();
+  let phone = location.state.phone;
+  const userData = async (e) => {
+    //e.preventDefault();
+    // const { phone:phone} = user;
+    console.log("user");
+    console.log(location.state.phone);
+    const res = await fetch("/get-mainpage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone,
+      }),
+    });
+    var data = await res.json();
+
+    // console.log(data);
+    setUser({
+      name: data.data.name,
+      email: data.data.email,
+      phone: data.data.phone,
+      city: data.data.city,
+      state: data.data.state,
+      dob: data.data.dob,
+      points: data.data.points,
+      money: data.data.money,
+      accountNumber: data.data.accountNumber,
+    });
+    // console.log("Hello");
+    // console.log(user);
+    // console.log(data.data);
+    // console.log(data.data.name);
+  };
+  
+  // const navigate = useNavigate()
+  //   const navigateLevelsPage = () => {
+  //     console.log(phone);
+  //         navigate('/LevelsPage',{state: {phone:phone}});
+
+  //       }
+  useEffect(() => {
+    userData();
+  }, []);
   return (
     <div id="QuickTransfer">
       <section>
@@ -199,10 +248,10 @@ export default function QuickTransfer() {
         <div className="list2">
           <ul>
             <li>
-              <input type="radio" id="html" name="fav_language" value="60003200024"
-          checked={accountNumber === "60003200024"}
-          onChange={handleChange}/>{" "}
-              60003200024
+              <input type="radio" id="html" name="accountNumber" value="60003200024"
+          // checked={accountNumber === "60003200024"}
+         />{" "}
+             {user.accountNumber}
             </li>
             <li>Savings</li>
             <li>Vile parle</li>
@@ -217,7 +266,7 @@ export default function QuickTransfer() {
             <li>
               <b>Selected account number :</b>
             </li>
-            <li>60003200024</li>
+            <li>2036155608</li>
           </ul>
         </div>
         <div className="list4">
@@ -288,7 +337,11 @@ export default function QuickTransfer() {
         <div className="list8">
           <ul>
             <li>
-              <button className="button-87" onClick={PostData}>
+              <button className="button-87"  onClick={() => { PostData(); 
+                   
+                  
+                 } }>
+                  
                 <b>Submit</b>
               </button>
             </li>

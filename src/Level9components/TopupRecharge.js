@@ -62,7 +62,7 @@ export default function TopupRecharge() {
         </div>
         <div className='list2'>
           <ul>
-            <li ><input type="radio" id="html" name="fav_language" value="HTML" /> 60003200024</li>
+            <li ><input type="radio" id="html" name="fav_language" value="HTML" /> 2036155608</li>
             <li>Savings</li>
             <li>Vile parle</li>
             <li><img className="rupeeblack" src={rupeeblack} />54000</li>
@@ -71,7 +71,7 @@ export default function TopupRecharge() {
         <div className='list3'>
           <ul>
             <li><b>Selected account number :</b></li>
-            <li>60003200024</li>
+            <li>2036155608</li>
           </ul>
         </div>
         <div className='list4'>

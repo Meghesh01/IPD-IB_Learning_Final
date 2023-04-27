@@ -76,7 +76,7 @@ export default function Level7SelectDebitAccount() {
       </div>
       <div className='list2'>
         <ul className='row'>
-          <div className='col-4'><li ><input type="radio" id="html" name="fav_language" value="HTML"/> 60003200024</li></div>
+          <div className='col-4'><li ><input type="radio" id="html" name="fav_language" value="HTML"/> 2036155608</li></div>
           <div className='col-4'><li>Savings</li></div>
           <div className='col-4'><li>Vile parle</li></div>
         </ul>
@@ -84,7 +84,7 @@ export default function Level7SelectDebitAccount() {
       <div className='list3'>
         <ul>
           <li><b>Selected account number :</b></li>
-          <li>60003200024</li>
+          <li>2036155608</li>
         </ul>
       </div>
       </div>

@@ -65,7 +65,7 @@ export default function Level7EnterOTP() {
                   <span><i>Mandatory fields are marked in asterisk(*)</i></span>           
         </div>
       <div className="d-flex flex-column px-4 pb-4" style={{color: 'rgb(50, 110, 153)'}}>
-                  <span>Enter the One Time Password sent to your Mobile number</span>           
+                  <span>Enter the profile password</span>           
         </div>
       
      
@@ -77,7 +77,7 @@ export default function Level7EnterOTP() {
          <div className="row">
             <div className="col">
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
-                  <span>One Time Password<span style={{color: 'rgb(244, 166, 63)'}}>*</span></span> 
+                  <span>profile password<span style={{color: 'rgb(244, 166, 63)'}}>*</span></span> 
                   
                </div>
             </div>
@@ -94,7 +94,7 @@ export default function Level7EnterOTP() {
          </div>
          <div id="list8">
             <ul>
-            <li><Link to="/Level7SelectDebitAccount"><button className='button-87'><b>Submit</b></button></Link></li>
+            <li><Link to="/Level7SelectCard"><button className='button-87'><b>Submit</b></button></Link></li>
             </ul>
         </div>
          

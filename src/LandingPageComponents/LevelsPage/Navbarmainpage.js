@@ -3,8 +3,55 @@ import userlogo from '../images/Navbar images/userlogo.png'
 import coins from '../images/Navbar images/coins.png'
 import rupee from '../images/Navbar images/rupee.png'
 import '../Styles/Navbarmainpage1.scss'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
-export default function Navbarmainpage() {
+export default function Navbarmainpage(props) {
+    const [user, setUser] = useState({})
+    const date = new Date();
+    let phone = props.phone;
+    const userData = async (e) => {
+        //e.preventDefault();
+        // const { phone:phone} = user;
+        console.log("user");
+        console.log(phone)
+        const res = await fetch("/get-mainpage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+          phone,
+          }),
+        });
+        var data = await res.json();
+       
+  
+        // console.log(data);
+        setUser({
+            name : data.data.name,
+            accountNumber : data.data.accountNumber,
+            email: data.data.email,
+            phone: data.data.phone,
+            city : data.data.city,
+            state : data.data.state,
+            dob : data.data.dob,
+            points : data.data.points,
+            money : data.data.money,
+  
+        });
+        // console.log("Hello");
+        // console.log(user);
+        // console.log(data.data);
+        // console.log(data.data.name);
+        
+      };
+      
+        
+      useEffect(() => {
+        userData();
+        
+      }, [])
   return (
     <>
     <div id="navbar-levels">
@@ -19,17 +66,17 @@ export default function Navbarmainpage() {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/">Points Earned :
-                                        <img src={coins} className="coins" alt="coin" /> 500pts </a>
+                                        <img src={coins} className="coins" alt="coin" /> 50pts </a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Current Balance : <img src={rupee} className="rupee" alt="rupee" /> 20,000 /-</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Current Balance : <img src={rupee} className="rupee" alt="rupee" />10000 /-</a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav1-item'>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Welcome, Meghesh Nagpure</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Welcome,Ram</a>
                                 </li>
                             </ul>
                         </div>

@@ -71,7 +71,7 @@ export default function Level7Enter4DigitPin() {
          <div className="row">
             <div className="col">
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
-                  <span>Enter four Digits of New Pin.(Enter first 2 digits created by you followed by two digit sent to you through SMS)<span style={{color: 'rgb(244, 166, 63)'}}>*</span></span> 
+                  <span>Enter four Digits of New Pin.<span style={{color: 'rgb(244, 166, 63)'}}>*</span></span> 
                   
                </div>
             </div>

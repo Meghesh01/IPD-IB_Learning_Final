@@ -51,10 +51,10 @@ export default function Level3() {
       window.alert("Invalid registration");
       console.log("Invalid registration");
     } else {
-      window.alert("Successful Registration");
+      window.alert("Successfully Added beneficiary");
       console.log("Successful registration");
 
-      navigate("/Levelspage");
+      // navigate("/Levelspage");
     }
   };
   return (

@@ -77,7 +77,7 @@ export default function Level7SelectDebitAccount() {
       </div>
       <div className='list2'>
         <ul className='row'>
-          <div className='col-3'><li ><input type="radio" id="html" name="fav_language" value="HTML"/> 60003200024</li></div>
+          <div className='col-3'><li ><input type="radio" id="html" name="fav_language" value="HTML"/> 2036155608</li></div>
           <div className='col-3'><li>RAHULKALATHIA</li></div>
           <div className='col-3'><li>ACTIVE</li></div>
           <div className='col-3'><li>12-12-2012</li></div>
@@ -89,7 +89,7 @@ export default function Level7SelectDebitAccount() {
       <div className='list3'>
         <ul>
           <li><b>Selected Card number :</b></li>
-          <li>60003200024</li>
+          <li>2036155608</li>
         </ul>
       </div>
       </div>
@@ -99,7 +99,7 @@ export default function Level7SelectDebitAccount() {
       <form action="">
          <div id="list8">
             <ul style={{paddingLeft : 0}}>
-            <li><Link to="/Level7Enter2DigitPin"><button className='button-87'><b>Submit</b></button></Link></li>
+            <li><Link to="/Level7Enter4DigitPin"><button className='button-87'><b>Submit</b></button></Link></li>
             <li><button className='button-87'><b>Cancel</b></button></li>
             </ul>
       

@@ -6,13 +6,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './Level21.scss';
 import { Link} from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 import bankimg1 from './bankimg1.jpg';
 import bankimg2 from './bankimg2.jpg';
 import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
-
+import {useLocation } from "react-router-dom";
 // Multilingual
 import { createRoot } from 'react-dom/client';
 import i18n from "i18next";
@@ -55,6 +55,16 @@ export default function Level2() {
     let currentLang = localStorage.getItem('lang');
     i18n.changeLanguage(currentLang);
   }, []);
+  const navigate = useNavigate();
+  const location = useLocation();
+  let phone = location.state.phone;
+
+  const navigateQuickTransfer = () => {
+    console.log(phone);
+    navigate('/QuickTransfer',{state: {phone:phone}});
+    
+  }
+ 
   return (
     <>
     <div id="level-2">
@@ -95,7 +105,7 @@ export default function Level2() {
             <li><a href="/level3">{t('add_beneficiary')}</a></li>
             <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">  {t('pay_trans')}  </a>
             <ul class="dropdown-menu">
-			  <li><a class="dropdown-item2" href="/QuickTransfer"> {t('quick_trans')}</a></li>
+			  <li><a class="dropdown-item2" onClick = {navigateQuickTransfer}> {t('quick_trans')}</a></li>
 			  <li><a class="dropdown-item2" href="/level4"> {t('trans_bene')}</a></li>
 			  {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
 		    </ul>
