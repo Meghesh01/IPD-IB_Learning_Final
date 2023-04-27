@@ -1,5 +1,6 @@
 import React from 'react';
-import { useEffect } from 'react'
+import { useEffect} from 'react'
+import { useLocation } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,13 +13,14 @@ import bankimg2 from './bankimg2.jpg';
 import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
-import {useLocation } from "react-router-dom";
+
 // Multilingual
 import { createRoot } from 'react-dom/client';
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import tEn from '../Languages/en/translation.json';
 import tHi from '../Languages/hi/translation.json';
+
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -55,16 +57,6 @@ export default function Level2() {
     let currentLang = localStorage.getItem('lang');
     i18n.changeLanguage(currentLang);
   }, []);
-  const navigate = useNavigate();
-  const location = useLocation();
-  let phone = location.state.phone;
-
-  const navigateQuickTransfer = () => {
-    console.log(phone);
-    navigate('/QuickTransfer',{state: {phone:phone}});
-    
-  }
- 
   return (
     <>
     <div id="level-2">
@@ -102,10 +94,10 @@ export default function Level2() {
     <section style={{ marginTop: 60 }} >
         <ul className='nav-2'>
             <li><a className="active" href="/">{t('my_profile')}</a></li>
-            <li><a href="/level3">{t('add_beneficiary')}</a></li>
+            <li><a href="#">{t('add_beneficiary')}</a></li>
             <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">  {t('pay_trans')}  </a>
             <ul class="dropdown-menu">
-			  <li><a class="dropdown-item2" onClick = {navigateQuickTransfer}> {t('quick_trans')}</a></li>
+			  <li><a class="dropdown-item2" href="/QuickTransfer"> {t('quick_trans')}</a></li>
 			  <li><a class="dropdown-item2" href="/level4"> {t('trans_bene')}</a></li>
 			  {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
 		    </ul>
@@ -131,7 +123,7 @@ export default function Level2() {
             <td>60003200024</td>
             <td>Kalyan</td>
             <td>Rs. 20,000 /-</td>
-            <td><a href = "/">Click here</a></td>
+            <td><a href = "#">Click here</a></td>
         </tr>
     </table>
     </section>

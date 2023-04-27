@@ -49,11 +49,6 @@ export default function Navbarmainpage(props) {
         let currentLang = localStorage.getItem('lang');
         i18n.changeLanguage(currentLang);
       }, []);
-      const navigate = useNavigate()
-      const navigateLevelsPage = () => {
-            navigate('/LevelsPage',{state: {phone:props.phone}});
-          }
-      
   return (
     <>
    <div id="navbar-mainpage">
@@ -73,7 +68,7 @@ export default function Navbarmainpage(props) {
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">{t('curr_bal')}<img src={rupee} className="rupee" alt="rupee" />{props.money} /-</a>
+                                    <a className="nav-link active" aria-current="page" href="/">{t('curr_bal')}<img src={rupee} className="rupee" alt="rupee" /> 20,000 /-</a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav1-item'>

@@ -11,7 +11,6 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import tEn from '../../Languages/en/translation.json';
 import tHi from '../../Languages/hi/translation.json';
-import { useNavigate } from "react-router-dom";
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -44,163 +43,24 @@ const changeLang = (l) => {
 
 export default function Level(props) {
   const { t } = useTranslation();
-  useEffect(() => {
-    let currentLang = localStorage.getItem('lang');
-    i18n.changeLanguage(currentLang);
-  }, []);
-  const [user, setUser] = useState({})
-  const date = new Date();
-  let phone = props.phone;
-  const userData = async (e) => {
-      //e.preventDefault();
-      // const { phone:phone} = user;
-      console.log("user");
-      console.log(phone)
-      const res = await fetch("/get-mainpage", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-        phone,
-        }),
-      });
-      var data = await res.json();
-     
-
-      // console.log(data);
-      setUser({
-          name : data.data.name,
-          accountNumber : data.data.accountNumber,
-          email: data.data.email,
-          phone: data.data.phone,
-          city : data.data.city,
-          state : data.data.state,
-          dob : data.data.dob,
-          points : data.data.points,
-          money : data.data.money,
-
-      });
-      // console.log("Hello");
-      // console.log(user);
-      // console.log(data.data);
-      // console.log(data.data.name);
-      
-    };
-    
-      
     useEffect(() => {
-      userData();
-      
-    }, [])
-  const navigate = useNavigate()
-
-    const navigateLevel2 = () => {
-          console.log(props.phone);
-          navigate('/Level2',{state: {phone:props.phone}});
-          
-        }
-        const navigateLevel1 = () => {
-          console.log(props.phone);
-          navigate('/Level1',{state: {phone:props.phone}});
-          
-        }
+        let currentLang = localStorage.getItem('lang');
+        i18n.changeLanguage(currentLang);
+      }, []);
   return (
     <>
-      <div id="levelspagenew">
-        <Navbarmainpage />
-        <div className="container">
-          <h1 className='levelselection'>{t('level_selection')}</h1>
-          <div className='levels'>
-          <div className="level" onClick={navigateLevel1}>
-              <div className="part">
-                <div className='parthead'><u>Level</u></div>
-                <div className='parttext'>
-               1</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Task</u></div>
-                <div className='parttext'>Login</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Score</u></div>
-                <div className='parttext'>
-                  <span className='plus'>+</span>
-                  <img src={coins} className="coins" alt="coin" /> 50pts
-                </div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Status</u></div>
-                <div className='parttext'>Completed / Pending</div>
-              </div>
-            </div>
 
-            <div className="level" onClick={navigateLevel2}>
-              <div className="part">
-                <div className='parthead'><u>Level</u></div>
-                <div className='parttext'>2</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Task</u></div>
-                <div className='parttext'>Quick Transfer</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Score</u></div>
-                <div className='parttext'>
-                  <span className='plus'>+</span>
-                  <img src={coins} className="coins" alt="coin" /> 50pts
-                </div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Status</u></div>
-                <div className='parttext'>Completed / Pending</div>
-              </div>
-           </div>
-
-
-            <Link to="/Levelmainpage3" className="level">
-              <div className="part">
-                <div className='parthead'><u>Level</u></div>
-                <div className='parttext'>3</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Task</u></div>
-                <div className='parttext'>Add Beneficiary</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Score</u></div>
-                <div className='parttext'>
-                  <span className='plus'>+</span>
-                  <img src={coins} className="coins" alt="coin" /> 50pts
-                </div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Status</u></div>
-                <div className='parttext'>Completed / Pending</div>
-              </div>
+      <div className="container">
+        <h1 className='levelselection'>{t('level_selection')}</h1>
+        <div className=' row'>
+          <div className="col">
+            <Link to="/Level1">
+              <button class="button-29" role="button">1</button>
             </Link>
-
-
-            <Link to="/Levelmainpage4" className="level">
-              <div className="part">
-                <div className='parthead'><u>Level</u></div>
-                <div className='parttext'>4</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Task</u></div>
-                <div className='parttext'>Payment To Beneficiary</div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Score</u></div>
-                <div className='parttext'>
-                  <span className='plus'>+</span>
-                  <img src={coins} className="coins" alt="coin" /> 50pts
-                </div>
-              </div>
-              <div className="part">
-                <div className='parthead'><u>Status</u></div>
-                <div className='parttext'>Completed / Pending</div>
-              </div>
+          </div>
+          <div className="col">
+            <Link to="/Level2">
+              <button class="button-29" role="button">2</button>
             </Link>
 
 

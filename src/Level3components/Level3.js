@@ -15,8 +15,9 @@ export default function Level3() {
   const navigate = useNavigate();
 
   const [level3, setLevel3] = useState({
-    accountnumber: "",
     name: "",
+    accountnumber: "",
+   
     beneficiaryaccountnumber: "",
     branch: "",
   });
@@ -30,7 +31,7 @@ export default function Level3() {
   };
 
   const PostData = async (e) => {
-    const { accountnumber,name, beneficiaryaccountnumber, branch } =
+    const { name,accountnumber, beneficiaryaccountnumber, branch } =
       level3;
 
     const res = await fetch("/level3", {
@@ -40,10 +41,12 @@ export default function Level3() {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        accountnumber,
+        
         name,
+        accountnumber,
+        
         beneficiaryaccountnumber,
-      branch,
+        branch,
       }),
     });
     const data = await res.json();
@@ -106,8 +109,8 @@ export default function Level3() {
       </div>
       <div className='list4'>
         <ul>
-          <li><b> Name </b>:<input type="text" className='inp1'  name="beneficiaryname"
-                value={level3.beneficiaryname}
+          <li><b> Name </b>:<input type="text" className='inp1'  name="name"
+                value={level3.name}
                 onChange={handleInputs}/></li>
           <li><b>Account Number</b> :<input type="text" className='inp2' name="accountnumber"
                 value={level3.accountnumber}

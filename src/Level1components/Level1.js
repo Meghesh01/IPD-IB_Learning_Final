@@ -26,7 +26,6 @@ import CaptchaAudio from "./Captcha_audio.mp3";
 import SubmitAudio from "./Submit_audio.mp3";
 import L1_CompletedAudio from "./L1_Completed_audio.mp3";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
@@ -65,6 +64,8 @@ const changeLang = (l) => {
     localStorage.setItem("lang", l);
   };
 };
+
+
 
 function MyVerticallyCenteredModal(props) {
   const navigate = useNavigate()
@@ -127,7 +128,11 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Body>
       <Modal.Footer>
         {/* <Button onClick={props.onHide}>Close</Button> */}
-        <button onClick={navigateLevelsPage} type="button" class="btn btn-danger mx-2">Close</button>
+        <Link to="/LevelsPage">
+          <button type="button" class="btn btn-danger mx-2">
+            Close
+          </button>
+        </Link>
       </Modal.Footer>
     </Modal>
   );
@@ -350,11 +355,12 @@ export default function Level1() {
 
                 <Button
                   style={{ width: "100px", marginRight: "10px" }}
-                  onClick={() => { PostData(); 
-                    updatePoints();setModalShow(true) ; audio5.loop = false; 
+                  onClick={() => {
+                    setModalShow(true);
+                    audio5.loop = false;
                     audio5.play();
-                  
-                 } }
+                    PostData();
+                  }}
                 >
                   {t("submit")}
                 </Button>

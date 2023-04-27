@@ -7,9 +7,8 @@ import Navbarmainpage from './Navbarmainpage';
 export default function Mainpage(props) {
     return (
         <>
-            <div id="levels-mainpage">
-            <Navbarmainpage phone = {props.phone} />
-            {/* <Navbarmainpage/> */}
+           <div id="levels-mainpage">
+           <Navbarmainpage />
             <div className="container">
                 <Level phone = {props.phone} />
             </div>

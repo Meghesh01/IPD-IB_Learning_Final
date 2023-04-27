@@ -3,10 +3,15 @@ import userlogo from '../images/userlogo.png'
 import coins from '../images/coins.png'
 import rupee from '../images/rupee.png'
 import './Navbarmainpage1.scss'
+import { useNavigate } from "react-router-dom";
 
 import { Link } from 'react-router-dom';
 
 export default function Navbarmainpage(props) {
+    const navigate = useNavigate()
+    const navigateLevelsPage = () => {
+          navigate('/LevelsPage',{state: {phone:props.phone}});
+        }
   return (
     <>
    <div id="navbar-mainpage">
@@ -45,7 +50,8 @@ export default function Navbarmainpage(props) {
                                 <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end">
                                     <li><Link to="/Scoreboard" className="dropdown-item" >Scoreboard</Link></li>
                                     {/* <li><a className="dropdown-item" href="/">Language</a></li> */}
-                                    <li><Link to="/LevelsPage" className="dropdown-item" >Levels Page</Link></li>
+                                    {/* <li><Link to="/LevelsPage" className="dropdown-item" >Levels Page</Link></li> */}
+                                    <li className="dropdown-item" onClick={navigateLevelsPage}>Levels Page</li>
 
                                     <li><a className="dropdown-item" href="/">Log out</a></li>
                                 </ul>

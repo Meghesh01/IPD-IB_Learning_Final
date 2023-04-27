@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./QuickTransfer.scss";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import sbilogo from "./sbi-logo.png";
 import logoutlogo from "./logout.png";
 import rupeeblack from "../images/rupeeblack.png";
@@ -57,21 +57,19 @@ export default function QuickTransfer(props) {
     i18n.changeLanguage(currentLang);
   }, []);
 
-
-  const [accountNumber, setaccountNumber] = useState('');
+  const [accountNumber, setaccountNumber] = useState("");
   const handleChange = (event) => {
     setaccountNumber(event.target.value);
   };
 
 
-  
+  const navigate = useNavigate();
 
 
   const [level2, setLevel2] = useState({
     accountnumber: "",
-    beneficiaryname:"",
-   beneficiaryaccountnumber: "",
-  
+    beneficiaryname: "",
+    beneficiaryaccountnumber: "",
     amount: "",
   });
   let name, value;
@@ -84,14 +82,14 @@ export default function QuickTransfer(props) {
   };
   const navigate = useNavigate();
   const PostData = async (e) => {
-    //  alert("Hi");
+     alert("Hi");
     console.log("HI");
     const { accountnumber, beneficiaryname, beneficiaryaccountnumber, amount } =
       level2;
     // alert(beneficiaryname);
     // alert(beneficiaryaccountnumber);
     // alert(amount);
-  
+
     const res = await fetch("/level2", {
       method: "POST",
       headers: {
@@ -113,7 +111,7 @@ export default function QuickTransfer(props) {
       window.alert("Successful QuickTransfer");
       console.log("Successful registration");
 
-      // navigate("/Levelspage",{state: {phone:phone}});
+      navigate("/Levelspage");
     }
   };
   const [user, setUser] = useState({});
@@ -248,10 +246,10 @@ export default function QuickTransfer(props) {
         <div className="list2">
           <ul>
             <li>
-              <input type="radio" id="html" name="accountNumber" value="60003200024"
-          // checked={accountNumber === "60003200024"}
-         />{" "}
-             {user.accountNumber}
+              <input type="radio" id="html" name="fav_language" value="60003200024"
+          checked={accountNumber === "60003200024"}
+          onChange={handleChange}/>{" "}
+              60003200024
             </li>
             <li>Savings</li>
             <li>Vile parle</li>

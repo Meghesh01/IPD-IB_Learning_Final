@@ -91,12 +91,16 @@ export default function Mainpage() {
   return (
     <>
       <div id="main-page">
+
         <Navbarmainpage
           name={user.name}
           phone={user.phone}
           points={user.points}
           money={user.money}
         />
+
+        <Navbarmainpage name={user.name} phone={user.phone} points = {user.points} money = {user.money}/>
+
         <div className="container">
           <div className="main-body">
             <div className="row gutters-sm">

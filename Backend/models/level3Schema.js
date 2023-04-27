@@ -1,18 +1,20 @@
 const mongoose = require('mongoose');
 
 const level3Schema = new mongoose.Schema({
-    accountnumber: {
-        type: Number,
-        required: true
-    },
-    
     name: {
         type: String,
         required: true
     },
+    
+    accountnumber: {
+        type: String,
+        required: true
+    },
+    
+    
    
     beneficiaryaccountnumber: {
-        type: Number,
+        type: String,
         required: true
     },
     branch: {
