@@ -13,6 +13,7 @@ import Modal from "react-bootstrap/Modal";
 import L1_img from "./L1_img.PNG";
 import captcha_img from "./captcha_img.PNG";
 import login_icon from "./login_icon.png";
+import { useLocation } from "react-router-dom";
 import volume_icon from "./volume.png";
 import sbilogo from "./sbi-logo.png";
 import bounceArrow from "./bounce_arrow.png";

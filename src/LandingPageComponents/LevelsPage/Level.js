@@ -11,6 +11,7 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import tEn from '../../Languages/en/translation.json';
 import tHi from '../../Languages/hi/translation.json';
+import { useLocation } from "react-router-dom";
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({

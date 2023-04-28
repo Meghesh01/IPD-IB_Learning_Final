@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 import sbilogo from "./sbi-logo.png";
 import logoutlogo from "./logout.png";
 import rupeeblack from "../images/rupeeblack.png";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 // Multilingual
 import { createRoot } from "react-dom/client";
 import i18n from "i18next";
@@ -80,7 +80,7 @@ export default function QuickTransfer(props) {
 
     setLevel2({ ...level2, [name]: value });
   };
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const PostData = async (e) => {
      alert("Hi");
     console.log("HI");
