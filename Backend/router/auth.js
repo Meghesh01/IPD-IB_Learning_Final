@@ -78,6 +78,16 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.put('/updatepoints', async (req, res) => {
+  const { phone } = req.body;
+  const user = await User.findOne({ phone });
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  const updatedUser = await User.findOneAndUpdate({ phone }, { points: user.points + 50 }, { new: true });
+
   res.status(200).json({ points: updatedUser.points });
 });
 module.exports = router;
