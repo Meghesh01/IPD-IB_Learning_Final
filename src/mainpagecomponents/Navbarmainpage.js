@@ -49,6 +49,7 @@ export default function Navbarmainpage(props) {
         let currentLang = localStorage.getItem('lang');
         i18n.changeLanguage(currentLang);
       }, []);
+      
       const navigate = useNavigate()
     const navigateLevelsPage = () => {
           navigate('/LevelsPage',{state: {phone:props.phone}});

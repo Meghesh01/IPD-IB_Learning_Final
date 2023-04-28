@@ -10,11 +10,12 @@ export default function Navbarmainpage(props) {
     const [user, setUser] = useState({})
     const date = new Date();
     let phone = props.phone;
+    console.log(phone);
     const userData = async (e) => {
         //e.preventDefault();
         // const { phone:phone} = user;
         console.log("user");
-        console.log(phone)
+        console.log(phone);
         const res = await fetch("/get-mainpage", {
           method: "POST",
           headers: {
@@ -51,7 +52,7 @@ export default function Navbarmainpage(props) {
       useEffect(() => {
         userData();
         
-      }, [])
+      }, []);
   return (
     <>
     <div id="navbar-levels">
@@ -66,7 +67,7 @@ export default function Navbarmainpage(props) {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/">Points Earned :
-                                        <img src={coins} className="coins" alt="coin" /> 50pts </a>
+                                        <img src={coins} className="coins" alt="coin" /> {user.points}pts </a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
@@ -76,7 +77,7 @@ export default function Navbarmainpage(props) {
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav1-item'>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Welcome,Ram</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Welcome, {user.name}</a>
                                 </li>
                             </ul>
                         </div>

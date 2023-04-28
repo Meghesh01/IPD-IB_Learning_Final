@@ -1,12 +1,17 @@
 import React from 'react'
-
+import './mainpageNewCss.scss'
 import Mainpage from './Mainpage'
-import {  useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 export default function LevelsPage() {
+  const location = useLocation();
+  let phone = location.state.phone;
+  console.log(phone);
   return (
     <>
-        <Mainpage/>      
+       <div id="mainpageNewCss">
+       <Mainpage phone = {phone}/>   
+        </div>   
     </>
   )
 }

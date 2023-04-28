@@ -129,11 +129,11 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Body>
       <Modal.Footer>
         {/* <Button onClick={props.onHide}>Close</Button> */}
-        <Link to="/LevelsPage">
-          <button type="button" class="btn btn-danger mx-2">
+        {/* <Link to="/LevelsPage"> */}
+          <button type="button" onClick = {navigateLevelsPage} class="btn btn-danger mx-2">
             Close
           </button>
-        </Link>
+        {/* </Link> */}
       </Modal.Footer>
     </Modal>
   );
@@ -356,16 +356,23 @@ export default function Level1() {
 
                 <Button
                   style={{ width: "100px", marginRight: "10px" }}
-                  onClick={() => {
-                    setModalShow(true);
-                    audio5.loop = false;
-                    audio5.play();
+                  // onClick={() => {
+                  //   setModalShow(true);
+                  //   audio5.loop = false;
+                  //   audio5.play();
+                  //   PostData();
+                  // }}
+                  onClick={() => { 
                     PostData();
-                  }}
+                    updatePoints();
+                    setModalShow(true) ; 
+                    audio5.loop = false; 
+                    audio5.play(); } }
                 >
                   {t("submit")}
                 </Button>
-                <MyVerticallyCenteredModal
+                <MyVerticallyCenteredModal 
+                  phone = {phone}
                   show={modalShow}
                   // onHide={() => setModalShow(false)}
                 />

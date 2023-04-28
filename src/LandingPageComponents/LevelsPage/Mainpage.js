@@ -8,7 +8,7 @@ export default function Mainpage(props) {
     return (
         <>
            <div id="levels-mainpage">
-           <Navbarmainpage />
+           <Navbarmainpage phone = {props.phone} />
             <div className="container">
                 <Level phone = {props.phone} />
             </div>

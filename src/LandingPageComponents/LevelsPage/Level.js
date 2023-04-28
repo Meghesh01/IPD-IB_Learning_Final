@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react'
 import coins from '../images/Navbar images/coins.png'
 import Navbarmainpage from '../../mainpagecomponents/Navbarmainpage';
-import  { useState } from "react";
+
 // Multilingual
 import { createRoot } from 'react-dom/client';
 import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import tEn from '../../Languages/en/translation.json';
 import tHi from '../../Languages/hi/translation.json';
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -44,24 +44,118 @@ const changeLang = (l) => {
 
 export default function Level(props) {
   const { t } = useTranslation();
-    useEffect(() => {
-        let currentLang = localStorage.getItem('lang');
-        i18n.changeLanguage(currentLang);
-      }, []);
+  useEffect(() => {
+    let currentLang = localStorage.getItem('lang');
+    i18n.changeLanguage(currentLang);
+  
+  }, []);
+  console.log(props.phone);
+  const navigate = useNavigate()
+    const navigateLevel1 = () => {
+          navigate('/Level1',{state: {phone:props.phone}});
+        }
+        
+    const navigateLevel6 = () => {
+         navigate('/Level6',{state: {phone:props.phone}});
+    }
   return (
     <>
+      <div id="levelspagenew">
+        {/* <Navbarmainpage  phone = {props.phone}/> */}
+        <div className="container">
+          <h1 className='levelselection'>{t('level_selection')}</h1>
+          <div className='levels'>
+          {/* <button onClick={navigateLevel1} class="button-29" role="button">1</button> */}
 
-      <div className="container">
-        <h1 className='levelselection'>{t('level_selection')}</h1>
-        <div className=' row'>
-          <div className="col">
-            <Link to="/Level1">
-              <button class="button-29" role="button">1</button>
+              <button  onClick={navigateLevel1}  className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>1</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Login</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
+              </button>
+            
+
+            <Link to="/Level2" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>2</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Quick Transfer</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
-          </div>
-          <div className="col">
-            <Link to="/Level2">
-              <button class="button-29" role="button">2</button>
+
+
+            <Link to="/Levelmainpage3" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>3</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Add Beneficiary</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
+            </Link>
+
+
+            <Link to="/Levelmainpage4" className="level">
+              <div className="part">
+                <div className='parthead'><u>Level</u></div>
+                <div className='parttext'>4</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Task</u></div>
+                <div className='parttext'>Payment To Beneficiary</div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Score</u></div>
+                <div className='parttext'>
+                  <span className='plus'>+</span>
+                  <img src={coins} className="coins" alt="coin" /> 50pts
+                </div>
+              </div>
+              <div className="part">
+                <div className='parthead'><u>Status</u></div>
+                <div className='parttext'>Completed / Pending</div>
+              </div>
             </Link>
 
 
