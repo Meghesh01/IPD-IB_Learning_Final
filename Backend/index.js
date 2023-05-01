@@ -16,6 +16,7 @@ app.use(require('./router/level1'));
 app.use(require('./router/level2'));
 app.use(require('./router/level3'));
 app.use(require('./router/level4'));
+app.use(require('./router/passbook'));
 
 
 const PORT = process.env.PORT;

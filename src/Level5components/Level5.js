@@ -1,17 +1,28 @@
-import React  from "react";
+import React from "react";
 import Navbarmainpage from "./Navbarmainpage";
 import "./Level5.css";
 import ReactToPrint, { useReactToPrint } from "react-to-print";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function Level5() {
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    getEntries();
+  }, []);
+
+  const getEntries = async () => {
+    const response = await fetch("/passbook");
+    const data = await response.json();
+    setEntries(data);
+  };
 
   return (
     <>
-
-    
       <div id="Level5">
         <Navbarmainpage />
-        <div  className="container">
+        <div className="container">
           <h2 className="transac">Transactions : </h2>
           <table>
             <tr>
@@ -22,7 +33,22 @@ export default function Level5() {
               <th>Debit</th>
               <th>Balance</th>
             </tr>
-            <tr>
+            {entries.length > 0 ? (
+              <div>
+                {entries.map((entry) => (
+                  <tr key={entry.id}>
+                    <td>{entry.id}</td>
+                    <td>{entry.date}</td>
+                    <td>{entry.name}</td>
+                    <td>{entry.debitMoney}</td>
+                    <td>{entry.amount}</td>
+                  </tr>
+                ))}
+              </div>
+            ) : (
+              <p>No entries found.</p>
+            )}
+            {/* <tr>
               <td>1</td>
               <td>14/08/22</td>
               <td>Cash Deposit Self</td>
@@ -93,11 +119,10 @@ export default function Level5() {
               <td style={{ color: "blue" }}>
                 <b>13200</b>
               </td>
-            </tr>
+            </tr> */}
           </table>
         </div>
       </div>
-      
     </>
   );
 }

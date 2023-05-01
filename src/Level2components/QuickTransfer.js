@@ -67,7 +67,7 @@ export default function QuickTransfer(props) {
 
 
   const [level2, setLevel2] = useState({
-    accountnumber: "",
+    // accountnumber: "",
     beneficiaryname: "",
     beneficiaryaccountnumber: "",
     amount: "",
@@ -80,45 +80,14 @@ export default function QuickTransfer(props) {
 
     setLevel2({ ...level2, [name]: value });
   };
+  const location = useLocation();
+  let phone = location.state.phone;
   // const navigate = useNavigate();
-  const PostData = async (e) => {
-     alert("Hi");
-    console.log("HI");
-    const { accountnumber, beneficiaryname, beneficiaryaccountnumber, amount } =
-      level2;
-    // alert(beneficiaryname);
-    // alert(beneficiaryaccountnumber);
-    // alert(amount);
-
-    const res = await fetch("/level2", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        accountnumber,
-        beneficiaryname,
-        beneficiaryaccountnumber,
-        amount,
-      }),
-    });
-    const data = await res.json();
-    if (data.status === 422 || !data) {
-      window.alert("Invalid registration");
-      console.log("Invalid registration");
-    } else {
-      window.alert("Successful QuickTransfer");
-      console.log("Successful registration");
-
-      navigate("/Levelspage");
-    }
-  };
   const [user, setUser] = useState({});
   const date = new Date();
   // let phone = 9867075589;
-  const location = useLocation();
-  let phone = location.state.phone;
+  // const location = useLocation();
+  // let phone = location.state.phone;
   const userData = async (e) => {
     //e.preventDefault();
     // const { phone:phone} = user;
@@ -153,6 +122,70 @@ export default function QuickTransfer(props) {
     // console.log(data.data.name);
   };
   
+  const PostData = async (e) => {
+    //  alert("Hi");
+    // console.log("HI");
+    const {  beneficiaryname, beneficiaryaccountnumber, amount } =
+      level2;
+      const accountnumber = user.accountNumber;
+    // alert(beneficiaryname);
+    // alert(beneficiaryaccountnumber);
+    // alert(amount);
+
+    const res = await fetch("/level2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        accountnumber,
+        beneficiaryname,
+        beneficiaryaccountnumber,
+        amount,
+      }),
+    });
+    const data = await res.json();
+    if (data.status === 422 || !data) {
+      window.alert("Invalid registration");
+      console.log("Invalid registration");
+    } else {
+      window.alert("Successful QuickTransfer");
+      console.log("Successful registration");
+
+      navigate('/LevelsPage',{state: {phone:phone}});
+    }
+  };
+ 
+
+  const handleAddEntry = async (e) => {
+    const {  beneficiaryname, amount } =
+    level2;
+    console.log(level2,beneficiaryname);
+    const response = await fetch("/passbook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({  name: beneficiaryname, debitMoney: amount  }),
+    });
+    const data = await response.json();
+    if (data.status === 422 || !data) {
+      window.alert("Invalid registration");
+      console.log("Invalid registration");
+    } else {
+      window.alert("Successful QuickTransfer");
+      console.log("Successful registration");
+
+      navigate('/LevelsPage',{state: {phone:phone}});
+    }
+
+    //const data = await response.json();
+    // onAddEntry(data);
+    // setName('');
+    // setDebitMoney('');
+  };
+
   // const navigate = useNavigate()
   //   const navigateLevelsPage = () => {
   //     console.log(phone);
@@ -247,9 +280,8 @@ export default function QuickTransfer(props) {
           <ul>
             <li>
               <input type="radio" id="html" name="fav_language" value="60003200024"
-          checked={accountNumber === "60003200024"}
-          onChange={handleChange}/>{" "}
-              60003200024
+          />{" "}
+              {user.accountNumber}
             </li>
             <li>Savings</li>
             <li>Vile parle</li>
@@ -264,7 +296,7 @@ export default function QuickTransfer(props) {
             <li>
               <b>Selected account number :</b>
             </li>
-            <li>2036155608</li>
+            <li> {user.accountNumber}</li>
           </ul>
         </div>
         <div className="list4">
@@ -335,7 +367,7 @@ export default function QuickTransfer(props) {
         <div className="list8">
           <ul>
             <li>
-              <button className="button-87"  onClick={() => { PostData(); 
+              <button className="button-87"  onClick={() => { handleAddEntry(); 
                    
                   
                  } }>

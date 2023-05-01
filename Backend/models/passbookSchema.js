@@ -1,31 +1,17 @@
 const mongoose = require('mongoose');
 
 const passbookSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        unique: true
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    username: {
-        type: String,
-        required: true
-    },
-    creditmoney: {
-        type: Number,
-        default:0
-    },
-    debitmoney: {
-        type: Number,
-        required: true
-    },
-    
+  id: { type: Number, unique: true },
+  name: String,
+  date: { type: Date, default: Date.now },
+  debitMoney: Number,
+  amount: { type: Number, default: 20000 },
 });
 
+const Passbook = mongoose.model('Passbook', passbookSchema);
 
-const Passbook = mongoose.model('passbook', passbookSchema);
-
+// Export the Passbook model
 module.exports = Passbook;
+
+
 

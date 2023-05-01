@@ -1,33 +1,44 @@
 const express = require("express");
+
+// Router for backend
 const router = express.Router();
 
 require('../db/conn');
-const Passbook =require('../models/passbookSchema');
+const Passbook = require('../models/passbookSchema');
 
-router.post('/passbookentry', async (req, res) => {
-    try {
-      const { username, creditmoney, debitmoney} = req.body;
-      const passbook = await Passbook.create({
-        id: await Passbook.countDocuments() + 1,
-        username,
-        creditmoney,
-        debitmoney,
-      });
-      res.status(201).json(passbook);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server Error' });
-    }
-  });
-  
-  router.get('/getpassbook', async (req, res) => {
-    try {
-      const passbookEntries = await Passbook.find({});
-      res.status(200).json(passbookEntries);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Server Error' });
-    }
-  });
+// Add a new entry
+router.post("/passbook", async (req, res) => {
+  try {
+    const { name, debitMoney } = req.body;
 
-  module.exports = router;
+    const lastEntry = await Passbook.findOne({}, {}, { sort: { id: -1 } });
+
+    const newEntry = new Passbook({
+      id: lastEntry ? lastEntry.id + 1 : 1,
+      name,
+      debitMoney,
+      amount: lastEntry ? lastEntry.amount - debitMoney : 20000 - debitMoney,
+    });
+
+    await newEntry.save();
+
+    res.status(200).json(newEntry);
+  } catch (error) {
+    console.error("Hello",error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+// Get all entries
+router.get("/passbook", async (req, res) => {
+  try {
+    const passbook = await Passbook.find({});
+
+    res.status(200).json(passbook);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+module.exports = router;

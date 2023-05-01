@@ -57,6 +57,14 @@ export default function Level2() {
     let currentLang = localStorage.getItem('lang');
     i18n.changeLanguage(currentLang);
   }, []);
+
+  const location = useLocation();
+  let phone = location.state.phone;
+  console.log(phone);
+  const navigate = useNavigate()
+    const navigateQuickTransfer = () => {
+          navigate('/QuickTransfer',{state: {phone:phone}});
+        }
   return (
     <>
     <div id="level-2">
@@ -97,7 +105,7 @@ export default function Level2() {
             <li><a href="#">{t('add_beneficiary')}</a></li>
             <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">  {t('pay_trans')}  </a>
             <ul class="dropdown-menu">
-			  <li><a class="dropdown-item2" href="/QuickTransfer"> {t('quick_trans')}</a></li>
+            <li><a class="dropdown-item2" onClick={navigateQuickTransfer}> {t('quick_trans')}</a></li>
 			  <li><a class="dropdown-item2" href="/level4"> {t('trans_bene')}</a></li>
 			  {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
 		    </ul>
