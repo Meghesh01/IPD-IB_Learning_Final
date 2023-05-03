@@ -11,8 +11,20 @@ import bankimg2 from './bankimg2.jpg';
 import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function Level9() {
+  const location = useLocation();
+  let phone = location.state.phone;
+  const navigate = useNavigate()
+  const navigateTopUp = () => {
+    navigate('/TopupRecharge',{state: {phone:phone}});
+}
+const navigateElectricity = () => {
+  navigate('/ElectricityBill',{state: {phone:phone}});
+}
   return (
     <>
       <div id="level-2">
@@ -61,8 +73,8 @@ export default function Level9() {
               <li><a href="/">CARDS</a></li>
               <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="/" data-bs-toggle="dropdown"> BILL PAYMENTS </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item2" href="/TopUpRecharge">TopUp Recharge</a></li>
-                  <li><a class="dropdown-item2" href="/ElectricityBill">Electricity Bill</a></li>
+                  <li><a onClick={navigateTopUp} class="dropdown-item2" href="/TopUpRecharge">TopUp Recharge</a></li>
+                  <li><a onClick={navigateElectricity} class="dropdown-item2" href="/ElectricityBill">Electricity Bill</a></li>
                   {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
                 </ul>
               </li>

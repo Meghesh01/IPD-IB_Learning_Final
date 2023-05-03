@@ -8,8 +8,57 @@ import { Link } from 'react-router-dom';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 import rupeeblack from '../images/rupeeblack.png'
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function TopupRecharge() {
+  const navigate = useNavigate();
+
+
+  const [level91, setLevel91] = useState({
+    // accountnumber: "",
+    namedebit: "Recharge",
+    amount: "",
+  });
+  let name, value;
+  const handleInputs = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setLevel91({ ...level91, [name]: value });
+  };
+  const location = useLocation();
+  let phone = location.state.phone;
+
+   const handleAddEntry = async (e) => {
+      const {  namedebit, amount } =
+      level91;
+      
+      const response = await fetch("/passbook", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({  name: namedebit, debitMoney: amount  }),
+      });
+      const data = await response.json();
+      if (data.status === 422 || !data) {
+        window.alert("Invalid registration");
+        console.log("Invalid registration");
+      } else {
+        window.alert("Successful Paid");
+        console.log("Successful registration");
+  
+        navigate('/LevelsPage',{state: {phone:phone}});
+      }
+  
+      //const data = await response.json();
+      // onAddEntry(data);
+      // setName('');
+      // setDebitMoney('');
+    };
   return (
     <div id="ToupRecharge">
       <section>
@@ -79,7 +128,9 @@ export default function TopupRecharge() {
             <li><b>Enter the Service provider *</b>:<input type="text" className='inp1' /></li>
             <li><b>Enter City *</b> :<input type="text" className='inp2' /></li>
             <li><b>Enter Mobile Number *</b> :<input type="text" className='inp3' /> </li>
-            <li><b>Enter TopUp Amount *</b> : <input type="text" className='inp4' /></li>
+            <li><b>Enter TopUp Amount *</b> : <input name="amount"
+                value={level91.amount}
+                onChange={handleInputs} type="text" className='inp4' /></li>
           </ul>
         </div>
         <div className='list7'>
@@ -90,7 +141,7 @@ export default function TopupRecharge() {
         </div>
         <div className="list8">
           <ul>
-            <li><button className='button-87' style={{marginLeft:'85px'}}><b>Submit</b></button></li>
+            <li><button onClick={handleAddEntry} className='button-87' style={{marginLeft:'85px'}}><b>Submit</b></button></li>
             <li><button className='button-87'><b>Cancel</b></button></li>
           </ul>
         </div>
