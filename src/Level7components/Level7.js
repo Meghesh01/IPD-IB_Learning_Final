@@ -10,8 +10,18 @@ import logoutlogo from './logout.png';
 import rupeeblack from '../images/rupeeblack.png'
 import './radio-1.scss';
 import './alert-1.scss';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Level7() {
+   const location = useLocation();
+  let phone = location.state.phone;
+  let password = location.state.password;
+  console.log(password);
+  const navigate = useNavigate();
+  const navigateLevel7EnterOTP = () => {
+   navigate('/Level7EnterOTP',{state: {password:password}});
+   }
   return (
     <>
         <div id="level-6">
@@ -77,7 +87,7 @@ export default function Level7() {
          <div className="row">
             <div className="col-12">
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
-                  <span> <Link to="/Level7EnterOTP"><input id='radio' type="radio" class="option-input radio" name="example" /></Link>  Using Profile password</span> 
+                  <span> <a onClick={navigateLevel7EnterOTP}><input id='radio' type="radio" class="option-input radio" name="example" /></a>  Using Profile password</span> 
                </div>
             </div>
             

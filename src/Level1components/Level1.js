@@ -71,7 +71,7 @@ const changeLang = (l) => {
 function MyVerticallyCenteredModal(props) {
   const navigate = useNavigate()
     const navigateLevelsPage = () => {
-          navigate('/LevelsPage',{state: {phone:props.phone}});
+          navigate('/LevelsPage',{state: {phone:props.phone,password : props.password}});
         }
   return (
     <Modal
@@ -373,6 +373,7 @@ export default function Level1() {
                 </Button>
                 <MyVerticallyCenteredModal 
                   phone = {phone}
+                  password = {level1.password}
                   show={modalShow}
                   // onHide={() => setModalShow(false)}
                 />

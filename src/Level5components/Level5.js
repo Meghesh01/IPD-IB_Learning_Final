@@ -29,22 +29,22 @@ export default function Level5() {
               <th>Sr.no.</th>
               <th>Date</th>
               <th>Particulars</th>
-              <th>Credit</th>
+              {/* <th>Credit</th> */}
               <th>Debit</th>
               <th>Balance</th>
             </tr>
             {entries.length > 0 ? (
-              <div>
+              <>
                 {entries.map((entry) => (
                   <tr key={entry.id}>
                     <td>{entry.id}</td>
                     <td>{entry.date}</td>
                     <td>{entry.name}</td>
-                    <td>{entry.debitMoney}</td>
-                    <td>{entry.amount}</td>
+                    <td style={{ color: "red" }}>{entry.debitMoney}</td>
+                    <td style={{ color: "blue" }}>{entry.amount}</td>
                   </tr>
                 ))}
-              </div>
+              </>
             ) : (
               <p>No entries found.</p>
             )}

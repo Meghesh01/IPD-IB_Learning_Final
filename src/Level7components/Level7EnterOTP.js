@@ -11,8 +11,34 @@ import rupeeblack from '../images/rupeeblack.png'
 import './radio-1.scss';
 import './alert-1.scss';
 import './list8.scss';
+import { useLocation } from "react-router-dom";
+import  { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Level7EnterOTP() {
+   const location = useLocation();
+  let password = location.state.password;
+  console.log(password);
+  const [level7, setLevel7] = useState({
+   password: "",
+ });
+ let name, value;
+  const handleInputs = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setLevel7({ ...level7, [name]: value });
+  };
+  const navigate = useNavigate()
+  function comparePassword() {
+
+   if (password === level7.password) {
+      navigate('/Level7SelectCard');
+   } else {
+     alert("Incorrect Password");
+   }
+ }
   return (
     <>
         <div id="level-6">
@@ -77,14 +103,16 @@ export default function Level7EnterOTP() {
          <div className="row">
             <div className="col">
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
-                  <span>profile password<span style={{color: 'rgb(244, 166, 63)'}}>*</span></span> 
+                  <span>Profile Password<span style={{color: 'rgb(244, 166, 63)'}}>*</span></span> 
                   
                </div>
             </div>
             <div className="col">
                <div id='nostyle'>
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
-                  <span><input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"/></span>  
+                  <span><input name="password"
+                  value={level7.password}
+                  onChange={handleInputs} type="password" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1"/></span>  
                </div>
                </div>
             </div> 
@@ -94,7 +122,7 @@ export default function Level7EnterOTP() {
          </div>
          <div id="list8">
             <ul>
-            <li><Link to="/Level7SelectCard"><button className='button-87'><b>Submit</b></button></Link></li>
+            <li><button onClick={comparePassword} className='button-87'><b>Submit</b></button></li>
             </ul>
         </div>
          
