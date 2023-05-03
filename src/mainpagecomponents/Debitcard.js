@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Navbarmainpage from './Navbarmainpage'
 
 import map from '../images/map.png'
@@ -6,8 +6,44 @@ import chip from '../images/chip.png'
 import visa from '../images/visa.png'
 import pattern from '../images/pattern.png'
 import './Debitcard1.scss'
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function debitcard() {
+export default function Debitcard() {
+    const location = useLocation();
+  let phone = location.state.phone;
+  console.log(phone);
+  const [user, setUser] = useState({});
+  const userData = async (e) => {
+    //e.preventDefault();
+    // const { phone:phone} = user;
+    console.log("user");
+    console.log(location.state);
+    const res = await fetch("/getdebitname", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone,
+      }),
+    });
+    var data = await res.json();
+
+    // console.log(data);
+    setUser({
+      debitname: data.data.debitname,
+      phone: data.data.phone,
+    });
+    // console.log("Hello");
+    // console.log(user);
+    // console.log(data.data);
+    // console.log(data.data.name);
+  };
+  useEffect(() => {
+    userData();
+  }, []);
   return (
   <>
    <div id="debit-card">
@@ -43,7 +79,7 @@ export default function debitcard() {
                 <div className="row name">
                     {/* <p>MEGHESH N. NAGPURE</p>
                     <p>10 / 27</p> */}
-                    <div className="col-9">MEGHESH N. NAGPURE</div>
+                    <div className="col-9">{user.debitname}</div>
                     <div className="col">10 / 27</div>
                 </div>
             </div>

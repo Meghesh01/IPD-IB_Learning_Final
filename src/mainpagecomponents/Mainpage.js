@@ -9,6 +9,7 @@ import i18n from "i18next";
 import { useTranslation, initReactI18next } from "react-i18next";
 import tEn from "../Languages/en/translation.json";
 import tHi from "../Languages/hi/translation.json";
+import { useNavigate } from "react-router-dom";
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
@@ -83,6 +84,10 @@ export default function Mainpage() {
     // console.log(data.data);
     // console.log(data.data.name);
   };
+  const navigate = useNavigate()
+    const navigateDebitCard = () => {
+          navigate('/Viewdebitcard',{state: {phone:user.phone}});
+        }
 
   useEffect(() => {
     userData();
@@ -165,9 +170,9 @@ export default function Mainpage() {
                         <Link to="/Viewpassbook">
                           <button class="button-39">{t("view_pb")}</button>
                         </Link>
-                        <Link to="/Viewdebitcard">
-                          <button class="button-40">{t("view_db")}</button>
-                        </Link>
+                        
+                          <button onClick={navigateDebitCard} class="button-40">{t("view_db")}</button>
+                        
                       </div>
                     </li>
                   </ul>

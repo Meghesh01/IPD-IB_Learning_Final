@@ -58,6 +58,9 @@ export default function Level(props) {
     const navigateLevel2 = () => {
          navigate('/Level2',{state: {phone:props.phone}});
     }
+    const navigateLevel6 = () => {
+         navigate('/Level6',{state: {phone:props.phone}});
+    }
     const navigateLevel7 = () => {
          navigate('/Level7',{state: {phone:props.phone,password:props.password}});
     }
@@ -190,7 +193,7 @@ export default function Level(props) {
             </Link>
 
 
-            <Link to="/Level6" className="level">
+            <button onClick={navigateLevel6} className="level">
               <div className="part">
                 <div className='parthead'><u>Level</u></div>
                 <div className='parttext'>6</div>
@@ -210,7 +213,7 @@ export default function Level(props) {
                 <div className='parthead'><u>Status</u></div>
                 <div className='parttext'>Completed / Pending</div>
               </div>
-            </Link>
+            </button>
 
             <button onClick={navigateLevel7} className="level">
               <div className="part">

@@ -37,6 +37,7 @@ export default function Level7EnterOTP() {
       navigate('/Level7SelectCard');
    } else {
      alert("Incorrect Password");
+   //   navigate('/Level7EnterOTP',{state: {password:password}});
    }
  }
   return (

@@ -8,8 +8,85 @@ import { Link} from 'react-router-dom';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 import rupeeblack from '../images/rupeeblack.png'
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Level6() {
+  const location = useLocation();
+  let phone = location.state.phone;
+  console.log(phone);
+  
+  const [user, setUser] = useState({accountNumber: ""});
+  const userData = async (e) => {
+    //e.preventDefault();
+    // const { phone:phone} = user;
+    console.log("user");
+    console.log(location.state);
+    const res = await fetch("/get-mainpage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        phone,
+      }),
+    });
+    var data = await res.json();
+
+    // console.log(data);
+    setUser({
+      accountNumber: data.data.accountNumber,
+    });
+    // console.log("Hello");
+    // console.log(user);
+    // console.log(data.data);
+    // console.log(data.data.name);
+  };
+  console.log(user.accountNumber);
+  const [level6, setLevel6] = useState({
+    debitname: "",
+    phone : phone,
+  });
+  let name, value;
+  const handleInputs = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setLevel6({ ...level6, [name]: value });
+  };
+  const navigate = useNavigate();
+  const postData = async (e) => {
+    //e.preventDefault();
+    const { debitname,phone } = level6;
+    const res = await fetch("/setdebitname", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        debitname,
+        phone,
+      }),
+    });
+    const data = await res.json();
+    
+    if (data.error) {
+      // e.preventDefault();
+    alert("Invalid  credentials");
+    
+  }
+    else {
+
+      alert("Registration successful");
+      navigate('/LevelsPage',{state: {phone:phone}});
+    }
+  };
+
+  useEffect(() => {
+    userData();
+  }, []);
   return (
     <div id="level-6">
       <section>
@@ -63,7 +140,7 @@ export default function Level6() {
       </div>
       <div className='list2'>
         <ul className='row'>
-          <div className='col-4'><li ><input type="radio" id="html" name="fav_language" value="HTML"/> 2036155608</li></div>
+          <div className='col-4'><li ><input type="radio" id="html" name="fav_language" value="HTML"/> {user.accountNumber}</li></div>
           <div className='col-4'><li>Savings</li></div>
           <div className='col-4'><li>Vile parle</li></div>
         </ul>
@@ -71,7 +148,7 @@ export default function Level6() {
       <div className='list3'>
         <ul>
           <li><b>Selected account number :</b></li>
-          <li>2036155608</li>
+          <li>{user.accountNumber}</li>
         </ul>
       </div>
 
@@ -90,7 +167,7 @@ export default function Level6() {
       </div>
       <div className='list2'>
         <ul className='row'>
-          <div className='col-4'><li ><input type="checkbox"/> 2036155608</li></div>
+          <div className='col-4'><li ><input type="checkbox"/> {user.accountNumber}</li></div>
           <div className='col-4'><li>Savings</li></div>
           <div className='col-4'><li>Vile parle</li></div>
         </ul>
@@ -104,7 +181,9 @@ export default function Level6() {
               <div className='col-4'><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option2"/> My Card</div>
             </div>
           </div>
-          <li><b>Name on the Card</b> :<input style={{width:'250px'}} type="text" className='inp2'/></li>
+          <li><b>Name on the Card</b> :<input name="debitname"
+                  value={level6.debitname}
+                  onChange={handleInputs} style={{width:'250px'}} type="text" className='inp2'/></li>
           <div className='row'>
             <div style={{width:'230px'}} className='col-md-3'><li><b>Select Type of Card</b> :</li></div>
             <div style={{width:'275px'}} className='col-4'>
@@ -127,9 +206,7 @@ export default function Level6() {
       </div>
       <div className="list8">
         <ul>
-          <li><button className='button-87' onClick={(e) => {
-                  window.alert("Successful Applied for a atm card");
-                }}><b>Submit</b></button></li>
+          <li><button className='button-87' onClick={postData}><b>Submit</b></button></li>
           <li><button className='button-87'><b>Cancel</b></button></li>
         </ul>
       </div>
