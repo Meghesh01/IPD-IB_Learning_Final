@@ -7,8 +7,57 @@ import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 import './Level8.scss';
 import '../Level6components/Level6.scss'
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function Level8() {
+   const navigate = useNavigate();
+
+
+  const [level8, setLevel8] = useState({
+    // accountnumber: "",
+    namedebit: "",
+    amount: "599",
+  });
+  let name, value;
+  const handleInputs = (e) => {
+    console.log(e);
+    name = e.target.name;
+    value = e.target.value;
+
+    setLevel8({ ...level8, [name]: value });
+  };
+  const location = useLocation();
+  let phone = location.state.phone;
+
+   const handleAddEntry = async (e) => {
+      const {  namedebit, amount } =
+      level8;
+      
+      const response = await fetch("/passbook", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({  name: namedebit, debitMoney: amount  }),
+      });
+      const data = await response.json();
+      if (data.status === 422 || !data) {
+        window.alert("Invalid registration");
+        console.log("Invalid registration");
+      } else {
+        window.alert("Successful Paid");
+        console.log("Successful registration");
+  
+        navigate('/LevelsPage',{state: {phone:phone}});
+      }
+  
+      //const data = await response.json();
+      // onAddEntry(data);
+      // setName('');
+      // setDebitMoney('');
+    };
   return (
     <>
     <div id='level-6'>
@@ -128,11 +177,13 @@ export default function Level8() {
             <div className="col-12">
                <div className="d-flex flex-column px-md-5 px-4 mb-4">
                   <span>Name</span> 
-                  <div className="inputWithIcon"> <input className="form-control text-uppercase" type="text" placeholder="rahul kalathia"/> <span className="far fa-user"></span> </div>
+                  <div className="inputWithIcon"> <input name="namedebit"
+                value={level8.namedebit}
+                onChange={handleInputs} className="form-control text-uppercase" type="text" placeholder="rahul kalathia"/> <span className="far fa-user"></span> </div>
                </div>
             </div>
             <div className="col-12 px-md-5 px-4 mt-3">
-               <div className="btn btn-primary w-100">Pay ₹599.00</div>
+               <div onClick={handleAddEntry} className="btn btn-primary w-100">Pay ₹599.00</div>
             </div>
          </div>
       </form>
