@@ -4,6 +4,8 @@
 --------------------------------------------------------------*/
 font-family: "Open Sans", sans-serif;
 color: #444444;
+font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+
 
 :root {
   scroll-behavior: smooth;
@@ -25,7 +27,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Nunito", sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -97,6 +99,7 @@ section {
     margin: 0;
     color: #4154f1;
     text-transform: uppercase;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   p {
@@ -106,6 +109,7 @@ section {
     line-height: 42px;
     font-weight: 700;
     color: #012970;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 }
 
@@ -113,6 +117,7 @@ section {
   .section-header p {
     font-size: 28px;
     line-height: 32px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 }
 
@@ -130,6 +135,7 @@ section {
   h2 {
     font-size: 28px;
     font-weight: 500;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   ol {
@@ -139,6 +145,7 @@ section {
     padding: 0 0 10px 0;
     margin: 0;
     font-size: 14px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     a {
       color: #fff;
@@ -221,6 +228,7 @@ section {
   padding: 20px 0;
   background-color: white;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
   &.header-scrolled {
     background: #fff;
@@ -241,8 +249,8 @@ section {
       font-weight: 700;
       letter-spacing: 1px;
       color: #012970;
-      font-family: "Nunito", sans-serif;
       margin-top: 3px;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
   }
 }
@@ -273,9 +281,9 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 10px 0 10px 30px;
-    font-family: "Nunito", sans-serif;
-    font-size: 16px;
-    font-weight: 700;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
     color: #013289;
     white-space: nowrap;
     transition: 0.3s;
@@ -545,18 +553,22 @@ section {
   height: 100vh;
   background: url(./hero-bg.png) top center no-repeat;
   background-size: cover;
-
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
   h1 {
     margin: 0;
-    font-size: 48px;
+    font-size: 35px;
     font-weight: 700;
     color: #012970;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
   }
 
   h2 {
     color: #444444;
     margin: 15px 0 0 0;
-    font-size: 26px;
+    font-size: 23px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   .btn-get-started {
@@ -570,7 +582,6 @@ section {
     box-shadow: 0px 5px 30px rgba(65, 84, 241, 0.4);
 
     span {
-      font-family: "Nunito", sans-serif;
       font-weight: 600;
       font-size: 16px;
       letter-spacing: 1px;
@@ -644,6 +655,7 @@ section {
 --------------------------------------------------------------*/
 
 .about {
+  
   .content {
     background-color: #f6f9ff;
     padding: 40px;
@@ -654,19 +666,22 @@ section {
     font-weight: 700;
     color: #4154f1;
     text-transform: uppercase;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   h2 {
     font-size: 48px;
     font-weight: 700;
     color: #012970;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   p {
     color: #444444;
     margin: 15px 0 30px 0;
     line-height: 35px;
-    font-size: 28px;
+    font-size: 23px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
   .btn-read-more {
@@ -677,12 +692,14 @@ section {
     color: #fff;
     background: #4154f1;
     box-shadow: 0px 5px 25px rgba(65, 84, 241, 0.3);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 
     span {
       font-family: "Nunito", sans-serif;
       font-weight: 600;
       font-size: 16px;
       letter-spacing: 1px;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
 
     i {

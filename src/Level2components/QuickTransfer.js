@@ -19,6 +19,17 @@ import tEn from "../Languages/en/translation.json";
 import tHi from "../Languages/hi/translation.json";
 import { useNavigate } from "react-router-dom";
 
+import bounceArrow from "./bounce_arrow.png";
+import volume_icon from "./volume.png";
+
+import QuickTransferAudio from "./QuickTransferAudio.mp3";
+import BeneficiaryNameAudio from './BeneficiaryNameAudio.mp3';
+import BeneficiaryAccountNumberAudio from './BeneficiaryAccountNumberAudio.mp3';
+import ReEnterAudio from './ReEnter.mp3';
+import AmountAudio from './AmountAudio.mp3';
+import PurposeAudio from './PurposeAudio.mp3';
+import TermsAudio from './TermsAudio.mp3';
+
 i18n
 
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -51,6 +62,18 @@ const changeLang = (l) => {
 };
 
 export default function QuickTransfer(props) {
+
+  const audio = new Audio(QuickTransferAudio);
+  audio.play();
+
+  const audio1 = new Audio(BeneficiaryNameAudio);
+  const audio2 = new Audio(BeneficiaryAccountNumberAudio);
+  const audio3 = new Audio(ReEnterAudio);
+  const audio4 = new Audio(AmountAudio);
+  const audio5 = new Audio(PurposeAudio);
+  const audio6 = new Audio(TermsAudio);
+
+
   const { t } = useTranslation();
   useEffect(() => {
     let currentLang = localStorage.getItem("lang");
@@ -121,13 +144,13 @@ export default function QuickTransfer(props) {
     // console.log(data.data);
     // console.log(data.data.name);
   };
-  
+
   const PostData = async (e) => {
     //  alert("Hi");
     // console.log("HI");
-    const {  beneficiaryname, beneficiaryaccountnumber, amount } =
+    const { beneficiaryname, beneficiaryaccountnumber, amount } =
       level2;
-      const accountnumber = user.accountNumber;
+    const accountnumber = user.accountNumber;
     // alert(beneficiaryname);
     // alert(beneficiaryaccountnumber);
     // alert(amount);
@@ -153,21 +176,21 @@ export default function QuickTransfer(props) {
       window.alert("Successful QuickTransfer");
       console.log("Successful registration");
 
-      navigate('/LevelsPage',{state: {phone:phone}});
+      navigate('/LevelsPage', { state: { phone: phone } });
     }
   };
- 
+
 
   const handleAddEntry = async (e) => {
-    const {  beneficiaryname, amount } =
-    level2;
-    console.log(level2,beneficiaryname);
+    const { beneficiaryname, amount } =
+      level2;
+    console.log(level2, beneficiaryname);
     const response = await fetch("/passbook", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({  name: beneficiaryname, debitMoney: amount  }),
+      body: JSON.stringify({ name: beneficiaryname, debitMoney: amount }),
     });
     const data = await response.json();
     if (data.status === 422 || !data) {
@@ -177,7 +200,7 @@ export default function QuickTransfer(props) {
       window.alert("Successful QuickTransfer");
       console.log("Successful registration");
 
-      navigate('/LevelsPage',{state: {phone:phone}});
+      navigate('/LevelsPage', { state: { phone: phone } });
     }
 
     //const data = await response.json();
@@ -280,32 +303,61 @@ export default function QuickTransfer(props) {
           <ul>
             <li>
               <input type="radio" id="html" name="fav_language" value="60003200024"
-          />{" "}
-              {user.accountNumber}
+                checked="checked" />{" "}
+              {/* {user.accountNumber} */}
+              60003200024
             </li>
-            <li>Savings</li>
-            <li>Vile parle</li>
-            <li>
+            <li style={{ marginLeft: '170px' }}>Savings</li>
+            <li style={{ marginLeft: '220px' }}>Vile parle</li>
+            <li style={{ marginLeft: '230px' }}>
               <img className="rupeeblack" src={rupeeblack} />
               54000
             </li>
           </ul>
         </div>
-        <div className="list3">
+        {/* <div className="list3">
           <ul>
             <li>
               <b>Selected account number :</b>
             </li>
-            <li> {user.accountNumber}</li>
+            <li> 
+               {user.accountNumber} 
+             
+            </li>
           </ul>
-        </div>
+        </div> */}
         <div className="list4">
           <ul>
             <li>
               <b>Beneficary Name </b>:
+              <img
+                src={volume_icon}
+                className="volume_icon"
+                alt="vol"
+                style={{ height: "15px", marginLeft: "10px", cursor: 'pointer' }}
+                onClick={() => {
+                  audio1.loop = false;
+                  audio1.play();
+                }}
+              />
+              <img
+                src={bounceArrow}
+                className="arrow bounce"
+                alt="arrow"
+                style={{
+                  position: 'absolute',
+                  width: '40px',
+                  height: '40px',
+                  rotate: '-90deg',
+                  backgroundSize: 'conatin',
+                  animation: 'bounce 2s infinite',
+                  marginTop: '-40px',
+                  marginLeft: '-30px'
+                }}
+              />
               <input
                 type="text"
-                className="inp1"
+                id="inp1"
                 name="beneficiaryname"
                 value={level2.beneficiaryname}
                 onChange={handleInputs}
@@ -313,9 +365,19 @@ export default function QuickTransfer(props) {
             </li>
             <li>
               <b>Beneficary Account Number</b> :
+              <img
+                src={volume_icon}
+                className="volume_icon"
+                alt="vol"
+                style={{ height: "15px", marginLeft: "10px", cursor: 'pointer' }}
+                onClick={() => {
+                  audio2.loop = false;
+                  audio2.play();
+                }}
+              />
               <input
                 type="number"
-                className="inp2"
+                id="inp2"
                 name="beneficiaryaccountnumber"
                 value={level2.beneficiaryaccountnumber}
                 onChange={handleInputs}
@@ -323,7 +385,17 @@ export default function QuickTransfer(props) {
             </li>
             <li>
               <b>Re-enter Beneficary Account Number</b> :
-              <input type="number" className="inp3" />{" "}
+              <img
+                src={volume_icon}
+                className="volume_icon"
+                alt="vol"
+                style={{ height: "15px", marginLeft: "10px", cursor: 'pointer' }}
+                onClick={() => {
+                  audio3.loop = false;
+                  audio3.play();
+                }}
+              />
+              <input type="number" id="inp3" />{" "}
             </li>
           </ul>
         </div>
@@ -331,9 +403,19 @@ export default function QuickTransfer(props) {
           <ul>
             <li>
               <b>Amount</b> :{" "}
+              <img
+                src={volume_icon}
+                className="volume_icon"
+                alt="vol"
+                style={{ height: "15px", marginLeft: "10px", cursor: 'pointer' }}
+                onClick={() => {
+                  audio4.loop = false;
+                  audio4.play();
+                }}
+              />
               <input
                 type="number"
-                className="inp4"
+                id="inp4"
                 name="amount"
                 value={level2.amount}
                 onChange={handleInputs}
@@ -345,13 +427,24 @@ export default function QuickTransfer(props) {
           <ul>
             <li>
               <b>Purpose </b>:{" "}
+              <img
+                src={volume_icon}
+                className="volume_icon"
+                alt="vol"
+                style={{ height: "15px", marginLeft: "10px", cursor: 'pointer' }}
+                onClick={() => {
+                  audio5.loop = false;
+                  audio5.play();
+                }}
+              />
             </li>
             <li>
-              <select className="dropdown">
+              <select className="dropdown" style={{ marginLeft: '200px' }}>
                 <option>Select Purpose</option>
                 <option>Fees</option>
                 <option>Rent</option>
                 <option>Bills</option>
+                <option>Others</option>
               </select>
             </li>
           </ul>
@@ -362,16 +455,27 @@ export default function QuickTransfer(props) {
               <input type="checkbox" />
             </li>
             <li>I accept the terms and conditions</li>
+            <img
+              src={volume_icon}
+              className="volume_icon"
+              alt="vol"
+              style={{ height: "15px", marginTop: '5px', marginLeft: "10px", cursor: 'pointer' }}
+              onClick={() => {
+                audio6.loop = false;
+                audio6.play();
+              }}
+            />
           </ul>
         </div>
         <div className="list8">
-          <ul>
+          <ul style={{ marginTop: '20px', marginLeft: '90px' }}>
             <li>
-              <button className="button-87"  onClick={() => { handleAddEntry(); 
-                   
-                  
-                 } }>
-                  
+              <button className="button-87" onClick={() => {
+                handleAddEntry();
+
+
+              }}>
+
                 <b>Submit</b>
               </button>
             </li>

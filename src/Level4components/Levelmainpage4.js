@@ -12,6 +12,8 @@ import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 
+import bounceArrow from './bounce_arrow.png';
+
 export default function Levelmainpage4() {
   return (
     <>
@@ -52,9 +54,23 @@ export default function Levelmainpage4() {
               <li><a className="active" href="/">MY PROFILE</a></li>
               <li><a href="#">ADD BENEFICIARY</a></li>
               <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="/" data-bs-toggle="dropdown">  PAYMENTS/TRANSFER  </a>
+              <img
+                      src={bounceArrow}
+                      className="arrow"
+                      alt="arrow"
+                      style={{
+                        position:'absolute',
+                        width: '70px',
+                        height: '70px',
+                        backgroundSize: 'contain',
+                        animation: 'bounce 2s infinite',
+                        rotate:'90deg',
+                        marginLeft:'-2rem'
+                      }}
+              />
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item2" href="#"> Quick Transfer</a></li>
-                  <li><a class="dropdown-item2" href="/level4"> Transfer Beneficiary</a></li>
+                  <li><a class="dropdown-item2" href="/level4" style={{backgroundColor:'red',border:'2px solid black',animation: 'bounce 2s infinite',cursor:'pointer'}}> Transfer to added Beneficiary</a></li>
                   {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
                 </ul>
               </li>

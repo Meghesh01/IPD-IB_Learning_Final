@@ -13,6 +13,9 @@ import L2_completedaudio from "./L2_completed_audio.mp3";
 import partyPopper from "./party-popper.png";
 import coins from "../images/coins.png";
 import Button from "react-bootstrap/Button";
+import bounceArrow from './bounce_arrow.png';
+
+
 
 function MyVerticallyCenteredModal(props) {
   return (
@@ -162,12 +165,12 @@ export default function QuickTransfer() {
         <div className="list2">
           <ul>
             <li>
-              <input type="radio" id="html" name="fav_language" value="HTML" />{" "}
+              <input type="radio" id="html" name="fav_language" value="HTML" checked/>{" "}
               2036155608
             </li>
-            <li>Savings</li>
-            <li>Vile parle</li>
-            <li>
+            <li style={{marginLeft:'180px'}}>Savings</li>
+            <li style={{marginLeft:'220px'}}>Vile parle</li>
+            <li style={{marginLeft:'240px'}}>
               <img className="rupeeblack" src={rupeeblack} />
               54000
             </li>
@@ -184,18 +187,47 @@ export default function QuickTransfer() {
         <div className="list4">
           <ul>
             <li>
-              <b>Amount </b>:<input type="text" className="inp1" />
+            <img
+                src={bounceArrow}
+                className="arrow bounce"
+                alt="arrow"
+                style={{
+                  position: 'absolute',
+                  width: '40px',
+                  height: '40px',
+                  rotate: '180deg',
+                  backgroundSize: 'conatin',
+                  animation: 'bounce 2s infinite',
+                  marginTop: '-9px',
+                  marginLeft: '-50px'
+                }}
+              />
+              <b>Amount </b>:<input type="text" className="inp1" style={{marginRight:'1rem'}}/>
               INR
             </li>
             <li>
+            <img
+                src={bounceArrow}
+                className="arrow bounce"
+                alt="arrow"
+                style={{
+                  position: 'absolute',
+                  width: '40px',
+                  height: '40px',
+                  rotate: '180deg',
+                  backgroundSize: 'conatin',
+                  animation: 'bounce 2s infinite',
+                  marginTop: '-9px',
+                  marginLeft: '-50px'
+                }}
+              />
               <b>Purpose </b>:{" "}
-            </li>
-            <li>
-              <select className="dropdown">
+              <select className="dropdown" style={{marginLeft:'4rem'}}>
                 <option>Select Purpose</option>
                 <option>Fees</option>
                 <option>Rent</option>
                 <option>Bills</option>
+                <option>Other</option>
               </select>
             </li>
           </ul>
@@ -205,10 +237,10 @@ export default function QuickTransfer() {
             <li>
               <b>Account Number</b>
             </li>
-            <li>
+            <li style={{marginLeft:'9rem'}}>
               <b>Beneficiary Name </b>
             </li>
-            <li>
+            <li style={{marginLeft:'9rem'}}>
               <b>Branch</b>
             </li>
             <li>
@@ -220,45 +252,17 @@ export default function QuickTransfer() {
           </ul>
           <hr className="hr"></hr>
         </div>
-        <div className="list2">
-          <ul>
-            <li>
-              <input type="radio" id="html" name="fav_language" value="HTML" />{" "}
-              12345670
-            </li>
-            <li>Savings</li>
-            <li>Vile parle</li>
-            <li>
-              <img className="rupeeblack" src={rupeeblack} />
-              54000
-            </li>
-          </ul>
-        </div>
+       
         <hr className="hr"></hr>
         <div className="list2">
           <ul>
             <li>
-              <input type="radio" id="html" name="fav_language" value="HTML" />{" "}
+              <input type="checkbox" id="html" name="fav_language" value="HTML" checked/>{" "}
               60003200024
             </li>
-            <li>Savings</li>
-            <li>Vile parle</li>
-            <li>
-              <img className="rupeeblack" src={rupeeblack} />
-              54000
-            </li>
-          </ul>
-        </div>
-        <hr className="hr"></hr>
-        <div className="list2">
-          <ul>
-            <li>
-              <input type="radio" id="html" name="fav_language" value="HTML" />{" "}
-              60003200024
-            </li>
-            <li>Savings</li>
-            <li>Vile parle</li>
-            <li>
+            <li style={{marginLeft:'9.5rem'}}>Meghesh Nagpure</li>
+            <li style={{marginLeft:'9.5rem'}}>Kalyan East </li>
+            <li style={{marginLeft:'14rem'}}>
               <img className="rupeeblack" src={rupeeblack} />
               54000
             </li>
@@ -267,8 +271,23 @@ export default function QuickTransfer() {
 
         <div className="list7">
           <ul>
+          <img
+                src={bounceArrow}
+                className="arrow bounce"
+                alt="arrow"
+                style={{
+                  position: 'absolute',
+                  width: '40px',
+                  height: '40px',
+                  rotate: '180deg',
+                  backgroundSize: 'conatin',
+                  animation: 'bounce 2s infinite',
+                  marginTop: '-9px',
+                  marginLeft: '-50px'
+                }}
+              />
             <li>
-              <input type="checkbox" />
+              <input type="checkbox" style={{marginLeft:'-1rem', marginRight:'1rem'}}/>
             </li>
             <li>I accept the terms and conditions</li>
           </ul>

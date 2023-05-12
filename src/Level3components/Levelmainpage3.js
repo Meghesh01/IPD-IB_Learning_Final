@@ -11,8 +11,12 @@ import bankimg2 from './bankimg2.jpg';
 import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
+import bounceArrow from './bounce_arrow.png';
+import L3_WelcomeAudio from "./Level3WelcomeAudio.mp3";
 
 export default function Levelmainpage3() {
+  const audio = new Audio(L3_WelcomeAudio);
+  audio.play();
   return (
     <>
       <div id="level-2">
@@ -50,7 +54,21 @@ export default function Levelmainpage3() {
           <section style={{ marginTop: 60 }} >
             <ul className='nav-2'>
               <li><a className="active" href="/">MY PROFILE</a></li>
-              <li><a href="/level3">ADD BENEFICIARY</a></li>
+              <li><a href="/level3">ADD BENEFICIARY</a>
+              <img
+                      src={bounceArrow}
+                      className="arrow"
+                      alt="arrow"
+                      style={{
+                        position:'absolute',
+                        width: '70px',
+                        height: '70px',
+                        backgroundSize: 'contain',
+                        animation: 'bounce 2s infinite',
+                        rotate:'90deg',
+                      }}
+              />
+              </li>
               <li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="/" data-bs-toggle="dropdown">  PAYMENTS/TRANSFER  </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item2" href="#"> Quick Transfer</a></li>
@@ -70,10 +88,10 @@ export default function Levelmainpage3() {
               <li><a href="/">PERSONAL LOAN</a></li>
             </ul>
 
-            <p style={{ textAlign: 'center', fontSize: 20, marginTop: 10 }}><b>WELCOME ! MEGHESH NANDKUMAR NAGPURE</b></p>
+            <p style={{ textAlign: 'center', fontSize: 20, marginTop: 10,position:'absoluite',marginRight:'13rem' }}><b>WELCOME ! MEGHESH NANDKUMAR NAGPURE</b></p>
           </section>
           <section>
-            <p style={{ textAlign: 'center', fontSize: 17 }}><b>TRANSACTION ACCOUNT : </b></p>
+            <p style={{ marginLeft:'35rem', fontSize: 17, position:'absolute' }}><b>TRANSACTION ACCOUNT : </b></p>
             <table>
               <tr>
                 <th>Account no.</th>
