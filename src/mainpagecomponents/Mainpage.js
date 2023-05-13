@@ -88,9 +88,21 @@ export default function Mainpage() {
     const navigateDebitCard = () => {
           navigate('/Viewdebitcard',{state: {phone:user.phone}});
         }
+        const [currentAmount, setCurrentAmount] = useState('');
+      
+        const fetchLatestEntry = async () => {
+          try {
+            const response = await fetch('/get-balance');
+            const data = await response.json();
+            setCurrentAmount(data.amount);
+          } catch (err) {
+            console.error(err);
+          }
+        };
 
   useEffect(() => {
     userData();
+    fetchLatestEntry();
   }, []);
 
   return (
@@ -104,7 +116,7 @@ export default function Mainpage() {
           money={user.money}
         />
 
-        <Navbarmainpage name={user.name} phone={user.phone} points = {user.points} money = {user.money}/>
+        <Navbarmainpage name={user.name} phone={user.phone} points = {user.points} money = {currentAmount}/>
 
         <div className="container">
           <div className="main-body">

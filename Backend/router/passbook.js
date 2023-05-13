@@ -41,4 +41,16 @@ router.get("/passbook", async (req, res) => {
   }
 });
 
+// Get balance
+router.get('/get-balance', async (req, res) => {
+  try {
+    const latestEntry = await Passbook.findOne().sort({ _id: -1 }).select('id amount -_id');
+    const { id, amount } = latestEntry || { id: 0, amount: 20000 };
+    res.json({ id, amount });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

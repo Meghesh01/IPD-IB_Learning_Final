@@ -216,6 +216,7 @@ export default function QuickTransfer(props) {
 
   //       }
   useEffect(() => {
+    // PostData();
     userData();
   }, []);
   return (

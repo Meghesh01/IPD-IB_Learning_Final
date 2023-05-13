@@ -48,9 +48,21 @@ export default function Navbarmainpage(props) {
         
       };
       
+      const [currentAmount, setCurrentAmount] = useState('');
+      
+        const fetchLatestEntry = async () => {
+          try {
+            const response = await fetch('/get-balance');
+            const data = await response.json();
+            setCurrentAmount(data.amount);
+          } catch (err) {
+            console.error(err);
+          }
+        };
         
       useEffect(() => {
         userData();
+        fetchLatestEntry();
         
       }, []);
   return (
@@ -72,7 +84,7 @@ export default function Navbarmainpage(props) {
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Current Balance : <img src={rupee} className="rupee" alt="rupee" />10000 /-</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Current Balance : <img src={rupee} className="rupee" alt="rupee" />{currentAmount} /-</a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav1-item'>
