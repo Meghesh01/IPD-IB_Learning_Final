@@ -215,9 +215,21 @@ export default function QuickTransfer(props) {
   //         navigate('/LevelsPage',{state: {phone:phone}});
 
   //       }
+  const [currentAmount, setCurrentAmount] = useState('');
+      
+        const fetchLatestEntry = async () => {
+          try {
+            const response = await fetch('/get-balance');
+            const data = await response.json();
+            setCurrentAmount(data.amount);
+          } catch (err) {
+            console.error(err);
+          }
+        };
   useEffect(() => {
     // PostData();
     userData();
+    fetchLatestEntry();
   }, []);
   return (
     <div id="QuickTransfer">
@@ -306,13 +318,13 @@ export default function QuickTransfer(props) {
               <input type="radio" id="html" name="fav_language" value="60003200024"
                 checked="checked" />{" "}
               {/* {user.accountNumber} */}
-              60003200024
+              {user.accountNumber}
             </li>
             <li style={{ marginLeft: '170px' }}>Savings</li>
             <li style={{ marginLeft: '220px' }}>Vile parle</li>
             <li style={{ marginLeft: '230px' }}>
               <img className="rupeeblack" src={rupeeblack} />
-              54000
+              {currentAmount} /-
             </li>
           </ul>
         </div>
