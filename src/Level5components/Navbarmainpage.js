@@ -1,21 +1,94 @@
 import React from 'react'
-import userlogo from '../images/userlogo.png'
-import coins from '../images/coins.png'
-import rupee from '../images/rupee.png'
+import userlogo from './images/Navbar images/userlogo.png'
+import coins from './images/Navbar images/coins.png'
+import rupee from './images/Navbar images/rupee.png'
 import './Navbarmainpage1.scss'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import { Link } from 'react-router-dom';
-
 export default function Navbarmainpage(props) {
-    const navigate = useNavigate()
-    const navigateLevelsPage = () => {
-          navigate('/LevelsPage',{state: {phone:props.phone}});
-        }
+
+    const [user, setUser] = useState({})
+    const date = new Date();
+    let phone = props.phone;
+    console.log(phone);
+    const userData = async (e) => {
+        //e.preventDefault();
+        // const { phone:phone} = user;
+        console.log("user");
+        console.log(phone);
+        const res = await fetch("/get-mainpage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+          phone,
+          }),
+        });
+        var data = await res.json();
+       
+  
+        // console.log(data);
+        setUser({
+            name : data.data.name,
+            accountNumber : data.data.accountNumber,
+            email: data.data.email,
+            phone: data.data.phone,
+            city : data.data.city,
+            state : data.data.state,
+            dob : data.data.dob,
+            points : data.data.points,
+            money : data.data.money,
+  
+        });
+        // console.log("Hello");
+        // console.log(user);
+        // console.log(data.data);
+        // console.log(data.data.name);
+        
+      };
+      
+      const [currentAmount, setCurrentAmount] = useState('');
+      
+        const fetchLatestEntry = async () => {
+          try {
+            const response = await fetch('/get-balance');
+            const data = await response.json();
+            setCurrentAmount(data.amount);
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        
+      useEffect(() => {
+        userData();
+        fetchLatestEntry();
+        
+      }, []);
+
+      const [points, setPoints] = useState(null);
+
+  const updatePoints = async () => {
+    const response = await fetch('updatepoints', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone })
+    });
+
+    const data = await response.json();
+    setPoints(data.points);
+  };
+    
+      const navigate = useNavigate()
+      const navigateLevelsPage = () => {
+            navigate('/LevelsPage',{state: {phone:props.phone}});
+          }
   return (
     <>
-   <div id="navbar-mainpage">
-   <nav className="navbar fixed-top navbar-dark navbar-expand-lg bg-dark">
+    <div id="navbar-levels">
+    <nav className="navbar fixed-top navbar-dark navbar-expand-lg bg-dark">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">IB Learning</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,17 +99,17 @@ export default function Navbarmainpage(props) {
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
                                 <li className="nav-item">
                                     <a className="nav-link active" aria-current="page" href="/">Points Earned :
-                                        <img src={coins} className="coins" alt="coin" /> 500pts </a>
+                                        <img src={coins} className="coins" alt="coin" /> {user.points}pts </a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav-item'>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Current Balance : <img src={rupee} className="rupee" alt="rupee" /> 20,000 /-</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Current Balance : <img src={rupee} className="rupee" alt="rupee" />{currentAmount} /-</a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0" id='nav1-item'>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" href="/">Welcome, {props.name}</a>
+                                    <a className="nav-link active" aria-current="page" href="/">Welcome, {user.name}</a>
                                 </li>
                             </ul>
                         </div>
@@ -48,10 +121,9 @@ export default function Navbarmainpage(props) {
                                 <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false"> User Menu <img src={userlogo} className="User-logo" alt="logo" />
                                 </a>
                                 <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                                    <li><Link to="/Scoreboard" className="dropdown-item" >Scoreboard</Link></li>
+                                    <li><a className="dropdown-item" href="/">Scoreboard</a></li>
                                     {/* <li><a className="dropdown-item" href="/">Language</a></li> */}
-                                    {/* <li><Link to="/LevelsPage" className="dropdown-item" >Levels Page</Link></li> */}
-                                    <li className="dropdown-item" onClick={navigateLevelsPage}>Levels Page</li>
+                                    <li><a onClick={()=>{navigateLevelsPage();updatePoints()}} className="dropdown-item" >Levels Page</a></li>
 
                                     <li><a className="dropdown-item" href="/">Log out</a></li>
                                 </ul>
@@ -60,7 +132,7 @@ export default function Navbarmainpage(props) {
                     </div>
                 </div>
             </nav>
-   </div>
+    </div>
     </>
   )
 }

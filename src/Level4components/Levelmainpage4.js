@@ -81,7 +81,7 @@ export default function Levelmainpage4() {
               />
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item2" href="#"> Quick Transfer</a></li>
-                  <li><a onClick={navigateLevel4} class="dropdown-item2" href="/level4" style={{backgroundColor:'red',border:'2px solid black',animation: 'bounce 2s infinite',cursor:'pointer'}}> Transfer to added Beneficiary</a></li>
+                  <li><a onClick={navigateLevel4} class="dropdown-item2" style={{backgroundColor:'red',border:'2px solid black',animation: 'bounce 2s infinite',cursor:'pointer'}}> Transfer to added Beneficiary</a></li>
                   {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
                 </ul>
               </li>

@@ -139,7 +139,17 @@ function MyVerticallyCenteredModal(props) {
 export default function QuickTransfer(props) {
 
   const audio = new Audio(QuickTransferAudio);
-  audio.play();
+  
+
+  const [flag, setFlag] = useState(true);
+
+  if(flag == true){
+    audio.play();
+    setFlag(false);
+  }
+  else{
+    audio.pause();
+  }
 
   const audio1 = new Audio(BeneficiaryNameAudio);
   const audio2 = new Audio(BeneficiaryAccountNumberAudio);

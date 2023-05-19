@@ -4,6 +4,8 @@ import "./Level5.css";
 import ReactToPrint, { useReactToPrint } from "react-to-print";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Level5() {
   const [entries, setEntries] = useState([]);
@@ -18,10 +20,13 @@ export default function Level5() {
     setEntries(data);
   };
 
+  const location = useLocation();
+  let phone = location.state.phone;
+
   return (
     <>
       <div id="Level5">
-        <Navbarmainpage />
+      <Navbarmainpage phone = {phone} />
         <div className="container">
           <h2 className="transac">Transactions : </h2>
           <table>

@@ -141,14 +141,23 @@ function MyVerticallyCenteredModal(props) {
 
 
 export default function Level1() {
+  
   const { t } = useTranslation();
   useEffect(() => {
     let currentLang = localStorage.getItem("lang");
     i18n.changeLanguage(currentLang);
   }, []);
 
+  const [flag, setFlag] = useState(true);
+
   const audio = new Audio(L1_WelcomeAudio);
-  audio.play();
+  if(flag == true){
+    audio.play();
+    setFlag(false);
+  }
+  else{
+    audio.pause();
+  }
 
   const audio1 = new Audio(UsernameAudio);
   const audio2 = new Audio(PasswordAudio);

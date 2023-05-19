@@ -11,8 +11,16 @@ import bankimg2 from './bankimg2.jpg';
 import bankimg3 from './bankimg3.jpg';
 import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Levelmainpage5() {
+  const navigate = useNavigate()
+  const location = useLocation();
+  let phone = location.state.phone;
+  const navigateLevel5 = () => {
+    navigate('/Level5',{state: {phone:phone}});
+  }
   return (
     <>
       <div id="level-2">
@@ -85,7 +93,7 @@ export default function Levelmainpage5() {
                 <td>60003200024</td>
                 <td>Kalyan</td>
                 <td>Rs. 20,000 /-</td>
-                <td><a href="/level5">Click here</a></td>
+                <td><a onClick={navigateLevel5}>Click here</a></td>
               </tr>
             </table>
           </section>

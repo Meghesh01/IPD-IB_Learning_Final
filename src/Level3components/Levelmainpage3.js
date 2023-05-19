@@ -62,7 +62,7 @@ export default function Levelmainpage3() {
           <section style={{ marginTop: 60 }} >
             <ul className='nav-2'>
               <li><a className="active" href="/">MY PROFILE</a></li>
-              <li><a onClick={navigateLevel3} href="/level3">ADD BENEFICIARY</a>
+              <li><a onClick={navigateLevel3}>ADD BENEFICIARY</a>
               <img
                       src={bounceArrow}
                       className="arrow"
