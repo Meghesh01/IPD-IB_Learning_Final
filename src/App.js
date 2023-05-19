@@ -29,6 +29,7 @@ import Level7CreatedPIN  from './Level7components/Level7CreatedPIN';
 import Level7SelectDebitAccount from './Level7components/Level7SelectDebitAccount';
 
 import Level8  from './Level8components/Level8';
+import Levelmainpage8 from './Level8components/Levelmainpage8';
 
 import Level9 from './Level9components/Level9';
 import TopupRecharge from './Level9components/TopupRecharge';
@@ -69,6 +70,7 @@ function App() {
         <Route path="/Level6" element={<Level6/>} />
         <Route path="/Levelmainpage6" element={<Levelmainpage6/>} />
         <Route path="/Levelmainpage7" element={<Levelmainpage7/>} />
+        <Route path="/Levelmainpage8" element={<Levelmainpage8/>} />
         <Route path="/Level7" element={<Level7/>} />
         <Route path="/Level7EnterOTP" element={<Level7EnterOTP/>} />
         <Route path="/Level7SelectDebitAccount" element={<Level7SelectDebitAccount/>} />

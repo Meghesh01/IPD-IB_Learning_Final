@@ -74,7 +74,7 @@ export default function Level(props) {
          navigate('/Levelmainpage7',{state: {phone:props.phone,password:props.password}});
     }
     const navigateLevel8 = () => {
-         navigate('/Level8',{state: {phone:props.phone}});
+         navigate('/Levelmainpage8',{state: {phone:props.phone}});
     }
     const navigateLevel9 = () => {
          navigate('/Level9',{state: {phone:props.phone}});
