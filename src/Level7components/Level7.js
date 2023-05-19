@@ -20,7 +20,7 @@ export default function Level7() {
   console.log(password);
   const navigate = useNavigate();
   const navigateLevel7EnterOTP = () => {
-   navigate('/Level7EnterOTP',{state: {password:password}});
+   navigate('/Level7EnterOTP',{state: {phone:phone,password:password}});
    }
   return (
     <>

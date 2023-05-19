@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 export default function Level7EnterOTP() {
    const location = useLocation();
   let password = location.state.password;
+  let phone = location.state.phone;
   console.log(password);
   const [level7, setLevel7] = useState({
    password: "",
@@ -34,7 +35,7 @@ export default function Level7EnterOTP() {
   function comparePassword() {
 
    if (password === level7.password) {
-      navigate('/Level7SelectCard');
+      navigate('/Level7SelectCard',{state: {phone:phone}});
    } else {
      alert("Incorrect Password");
    //   navigate('/Level7EnterOTP',{state: {password:password}});

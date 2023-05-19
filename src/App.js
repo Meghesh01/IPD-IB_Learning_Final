@@ -16,6 +16,7 @@ import Levelmainpage4 from './Level4components/Levelmainpage4';
 import Level5  from './Level5components/Level5';
 import Levelmainpage5 from './Level5components/Levelmainpage5';
 import Level6  from './Level6components/Level6';
+import Levelmainpage6 from './Level6components/Levelmainpage6';
 import QuickTransfer from './Level2components/QuickTransfer';
 
 import Level7  from './Level7components/Level7';
@@ -23,6 +24,7 @@ import Level7EnterOTP  from './Level7components/Level7EnterOTP';
 import Level7SelectCard  from './Level7components/Level7SelectCard';
 import Level7Enter2DigitPin  from './Level7components/Level7Enter2DigitPin';
 import Level7Enter4DigitPin  from './Level7components/Level7Enter4DigitPin';
+import Levelmainpage7 from './Level7components/Levelmainpage7';
 import Level7CreatedPIN  from './Level7components/Level7CreatedPIN';
 import Level7SelectDebitAccount from './Level7components/Level7SelectDebitAccount';
 
@@ -65,6 +67,8 @@ function App() {
         <Route path="/Level5" element={<Level5/>} />
         <Route path="/Levelmainpage5" element={<Levelmainpage5/>} />
         <Route path="/Level6" element={<Level6/>} />
+        <Route path="/Levelmainpage6" element={<Levelmainpage6/>} />
+        <Route path="/Levelmainpage7" element={<Levelmainpage7/>} />
         <Route path="/Level7" element={<Level7/>} />
         <Route path="/Level7EnterOTP" element={<Level7EnterOTP/>} />
         <Route path="/Level7SelectDebitAccount" element={<Level7SelectDebitAccount/>} />

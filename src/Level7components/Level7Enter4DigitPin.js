@@ -11,8 +11,17 @@ import rupeeblack from '../images/rupeeblack.png'
 import './radio-1.scss';
 import './alert-1.scss';
 import './list8.scss';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Level7Enter4DigitPin() {
+   const location = useLocation();
+   let phone = location.state.phone;
+   
+   const navigate = useNavigate();
+   const navigateLevel7CreatedPIN = () => {
+    navigate('/Level7CreatedPIN',{state: {phone:phone}});
+    }
   return (
     <>
         <div id="level-6">
@@ -88,7 +97,7 @@ export default function Level7Enter4DigitPin() {
          </div>
          <div id="list8">
             <ul>
-            <li><Link to="/Level7CreatedPIN"><button className='button-87'><b>Submit</b></button></Link></li>
+            <li><a onClick={navigateLevel7CreatedPIN}><button className='button-87'><b>Submit</b></button></a></li>
             <li><button className='button-87'><b>Cancel</b></button></li>
             </ul>
         </div>

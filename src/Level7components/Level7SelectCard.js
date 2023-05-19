@@ -12,8 +12,17 @@ import './radio-1.scss';
 import './alert-1.scss';
 import './list8.scss';
 import './list123.scss';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Level7SelectDebitAccount() {
+  const location = useLocation();
+  let phone = location.state.phone;
+  
+  const navigate = useNavigate();
+  const navigateLevel7Enter4DigitPin = () => {
+   navigate('/Level7Enter4DigitPin',{state: {phone:phone}});
+   }
   return (
     <>
         <div id="level-6">
@@ -99,7 +108,7 @@ export default function Level7SelectDebitAccount() {
       <form action="">
          <div id="list8">
             <ul style={{paddingLeft : 0}}>
-            <li><Link to="/Level7Enter4DigitPin"><button className='button-87'><b>Submit</b></button></Link></li>
+            <li><a onClick={navigateLevel7Enter4DigitPin}><button className='button-87'><b>Submit</b></button></a></li>
             <li><button className='button-87'><b>Cancel</b></button></li>
             </ul>
       
