@@ -13,10 +13,18 @@ import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 import bounceArrow from './bounce_arrow.png';
 import L3_WelcomeAudio from "./Level3WelcomeAudio.mp3";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Levelmainpage3() {
   const audio = new Audio(L3_WelcomeAudio);
   audio.play();
+  const navigate = useNavigate()
+  const location = useLocation();
+  let phone = location.state.phone;
+  const navigateLevel3 = () => {
+    navigate('/Level3',{state: {phone:phone}});
+  }
   return (
     <>
       <div id="level-2">
@@ -54,7 +62,7 @@ export default function Levelmainpage3() {
           <section style={{ marginTop: 60 }} >
             <ul className='nav-2'>
               <li><a className="active" href="/">MY PROFILE</a></li>
-              <li><a href="/level3">ADD BENEFICIARY</a>
+              <li><a onClick={navigateLevel3} href="/level3">ADD BENEFICIARY</a>
               <img
                       src={bounceArrow}
                       className="arrow"

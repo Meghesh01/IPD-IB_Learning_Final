@@ -7,11 +7,13 @@ export default function LevelsPage() {
   const location = useLocation();
   let phone = location.state.phone;
   let password = location.state.password;
+  let beneficiaryaccountnumber = location.state.beneficiaryaccountnumber;
+  let branch = location.state.branch;
   console.log(password);
   return (
     <>
        <div id="mainpageNewCss">
-       <Mainpage phone = {phone} password = {password}/>   
+       <Mainpage phone = {phone} password = {password} beneficiaryaccountnumber = {beneficiaryaccountnumber} branch = {branch}/>   
         </div>   
     </>
   )

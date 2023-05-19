@@ -13,8 +13,19 @@ import sbilogo from './sbi-logo.png';
 import logoutlogo from './logout.png';
 
 import bounceArrow from './bounce_arrow.png';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Levelmainpage4() {
+  const location = useLocation();
+  let phone = location.state.phone;
+  console.log(phone);
+  let beneficiaryaccountnumber = location.state.beneficiaryaccountnumber;
+  let branch = location.state.branch;
+  const navigate = useNavigate()
+  const navigateLevel4 = () => {
+    navigate('/Level4',{state: {phone:phone,beneficiaryaccountnumber:beneficiaryaccountnumber,branch:branch}});
+  }
   return (
     <>
       <div id="level-2">
@@ -70,7 +81,7 @@ export default function Levelmainpage4() {
               />
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item2" href="#"> Quick Transfer</a></li>
-                  <li><a class="dropdown-item2" href="/level4" style={{backgroundColor:'red',border:'2px solid black',animation: 'bounce 2s infinite',cursor:'pointer'}}> Transfer to added Beneficiary</a></li>
+                  <li><a onClick={navigateLevel4} class="dropdown-item2" href="/level4" style={{backgroundColor:'red',border:'2px solid black',animation: 'bounce 2s infinite',cursor:'pointer'}}> Transfer to added Beneficiary</a></li>
                   {/* <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li> */}
                 </ul>
               </li>

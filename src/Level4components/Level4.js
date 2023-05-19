@@ -14,6 +14,8 @@ import partyPopper from "./party-popper.png";
 import coins from "../images/coins.png";
 import Button from "react-bootstrap/Button";
 import bounceArrow from './bounce_arrow.png';
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -88,6 +90,14 @@ function MyVerticallyCenteredModal(props) {
 export default function QuickTransfer() {
   const audio5 = new Audio(L2_completedaudio);
   const [modalShow, setModalShow] = React.useState(false);
+  const location = useLocation();
+  let phone = location.state.phone;
+  let beneficiaryaccountnumber = location.state.beneficiaryaccountnumber;
+  let branch = location.state.branch;
+  const navigate = useNavigate()
+  const navigateLevelsPage = () => {
+    navigate('/LevelsPage',{state: {phone:phone}});
+  }
 
   return (
     <div id="QuickTransfer">
@@ -258,10 +268,10 @@ export default function QuickTransfer() {
           <ul>
             <li>
               <input type="checkbox" id="html" name="fav_language" value="HTML" checked/>{" "}
-              60003200024
+              {beneficiaryaccountnumber}
             </li>
             <li style={{marginLeft:'9.5rem'}}>Meghesh Nagpure</li>
-            <li style={{marginLeft:'9.5rem'}}>Kalyan East </li>
+            <li style={{marginLeft:'9.5rem'}}>{branch} </li>
             <li style={{marginLeft:'14rem'}}>
               <img className="rupeeblack" src={rupeeblack} />
               54000
@@ -301,6 +311,7 @@ export default function QuickTransfer() {
                 style={{ width: "100px", marginRight: "10px" }}
                 onClick={(e) => {
                   window.alert("Successful Transfer to a beneficiary");
+                  navigateLevelsPage();
                 }}
               >
                 Submit

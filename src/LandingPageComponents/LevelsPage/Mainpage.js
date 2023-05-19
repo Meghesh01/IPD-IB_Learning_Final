@@ -10,7 +10,7 @@ export default function Mainpage(props) {
            <div id="levels-mainpage">
            <Navbarmainpage phone = {props.phone} />
             <div className="container">
-                <Level phone = {props.phone} password = {props.password}/>
+                <Level phone = {props.phone} password = {props.password} beneficiaryaccountnumber = {props.beneficiaryaccountnumber} branch = {props.branch}/>
             </div>
             </div>
         </>

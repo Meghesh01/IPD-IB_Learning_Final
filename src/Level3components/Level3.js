@@ -12,6 +12,7 @@ import rupeeblack from '../images/rupeeblack.png'
 import { useNavigate } from "react-router-dom";
 import bounceArrow from './bounce_arrow.png';
 import volume_icon from "./volume.png";
+import { useLocation } from "react-router-dom";
 
 
 import BeneficiaryNameAudio from '../Level2components/BeneficiaryNameAudio.mp3';
@@ -50,7 +51,12 @@ export default function Level3() {
 
     setLevel3({ ...level3, [name]: value });
   };
+  const location = useLocation();
+  let phone = location.state.phone;
 
+    const navigateLevelsPage = () => {
+          navigate('/LevelsPage',{state: {phone:phone,beneficiaryaccountnumber:level3.beneficiaryaccountnumber,branch:level3.branch}});
+        }
   const PostData = async (e) => {
     const { name, accountnumber, beneficiaryaccountnumber, branch } =
       level3;
@@ -242,7 +248,7 @@ export default function Level3() {
           </div>
           <div className="list8">
             <ul>
-              <li><button className='button-87' onClick={PostData}><b>Submit</b></button></li>
+              <li><button className='button-87' onClick={navigateLevelsPage}><b>Submit</b></button></li>
               <li><button className='button-87'><b>Cancel</b></button></li>
             </ul>
           </div>
