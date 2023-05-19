@@ -30,6 +30,10 @@ import AmountAudio from './AmountAudio.mp3';
 import PurposeAudio from './PurposeAudio.mp3';
 import TermsAudio from './TermsAudio.mp3';
 
+import Modal from "react-bootstrap/Modal";
+import partyPopper from "../images/party-popper.png";
+import coins from "../images/coins.png";
+
 i18n
 
   .use(initReactI18next) // passes i18n down to react-i18next
@@ -60,6 +64,77 @@ const changeLang = (l) => {
     localStorage.setItem("lang", l);
   };
 };
+
+function MyVerticallyCenteredModal(props) {
+  const navigate = useNavigate()
+    const navigateLevelsPage = () => {
+          navigate('/LevelsPage',{state: {phone:props.phone,password : props.password}});
+        }
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header
+        closeButton
+        style={{ color: "white", backgroundColor: "black" }}
+      >
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          style={{ fontStyle: "italic", marginLeft: "62px" }}
+        >
+          <img
+            src={partyPopper}
+            className="party_popper"
+            alt="partypop"
+            style={{ height: 40, marginRight: 10, marginBottom: 10 }}
+          />
+          CONGRATULATIONS
+          <img
+            src={partyPopper}
+            className="party_popper"
+            alt="partypop"
+            style={{ height: 40, marginLeft: 10, marginBottom: 10 }}
+          />
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body
+        style={{ backgroundColor: "lightGreen", textAlign: "center" }}
+      >
+        <h4 style={{ color: "darkGreen", fontSize: "30px" }}>
+          Level 2 Completed !!!
+        </h4>
+        <p style={{ fontSize: "20px" }}>
+          Heartily Congratulations for your first victory. You have successfully
+          learnt to login.
+        </p>
+        <p
+          style={{ fontSize: "20px", textAlign: "center" }}
+          className="fw-bold"
+        >
+          Coins Earned:{" "}
+          <img
+            src={coins}
+            className="coins"
+            alt="coin"
+            style={{ height: "40px" }}
+          />{" "}
+          50 pts
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        {/* <Button onClick={props.onHide}>Close</Button> */}
+        {/* <Link to="/LevelsPage"> */}
+          <button type="button" onClick = {navigateLevelsPage} class="btn btn-danger mx-2">
+            Close
+          </button>
+        {/* </Link> */}
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 export default function QuickTransfer(props) {
 
@@ -200,7 +275,7 @@ export default function QuickTransfer(props) {
       window.alert("Successful QuickTransfer");
       console.log("Successful registration");
 
-      navigate('/LevelsPage', { state: { phone: phone } });
+      // navigate('/LevelsPage', { state: { phone: phone } });
     }
 
     //const data = await response.json();
@@ -231,6 +306,20 @@ export default function QuickTransfer(props) {
     userData();
     fetchLatestEntry();
   }, []);
+
+  const [modalShow, setModalShow] = React.useState(false);
+  const [points, setPoints] = useState(null);
+
+  const updatePoints = async () => {
+    const response = await fetch('updatepoints', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone })
+    });
+
+    const data = await response.json();
+    setPoints(data.points);
+  };
   return (
     <div id="QuickTransfer">
       <section>
@@ -485,12 +574,20 @@ export default function QuickTransfer(props) {
             <li>
               <button className="button-87" onClick={() => {
                 handleAddEntry();
-
+                updatePoints();
+                setModalShow(true) ; 
+                audio5.loop = false; 
+                audio5.play();
 
               }}>
 
                 <b>Submit</b>
               </button>
+              <MyVerticallyCenteredModal 
+                  phone = {phone}
+                  show={modalShow}
+                  // onHide={() => setModalShow(false)}
+                />
             </li>
             <li>
               <button className="button-87">

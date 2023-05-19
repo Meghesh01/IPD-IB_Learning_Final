@@ -124,7 +124,7 @@ function MyVerticallyCenteredModal(props) {
             alt="coin"
             style={{ height: "40px" }}
           />{" "}
-          20 pts
+          50 pts
         </p>
       </Modal.Body>
       <Modal.Footer>

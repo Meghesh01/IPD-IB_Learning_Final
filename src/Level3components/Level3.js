@@ -22,6 +22,80 @@ import BranchNameAudio from './BranchNameAudio.mp3';
 import TransferLimitAudio from './TransferLimitAudio.mp3';
 import TermsAudio from './TermsAudio.mp3';
 
+import Modal from "react-bootstrap/Modal";
+import partyPopper from "../images/party-popper.png";
+import coins from "../images/coins.png";
+
+function MyVerticallyCenteredModal(props) {
+  const navigate = useNavigate()
+  const navigateLevelsPage = () => {
+    navigate('/LevelsPage',{state: {phone:props.phone,beneficiaryaccountnumber:props.beneficiaryaccountnumber,branch:props.branch}});
+  }
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header
+        closeButton
+        style={{ color: "white", backgroundColor: "black" }}
+      >
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          style={{ fontStyle: "italic", marginLeft: "62px" }}
+        >
+          <img
+            src={partyPopper}
+            className="party_popper"
+            alt="partypop"
+            style={{ height: 40, marginRight: 10, marginBottom: 10 }}
+          />
+          CONGRATULATIONS
+          <img
+            src={partyPopper}
+            className="party_popper"
+            alt="partypop"
+            style={{ height: 40, marginLeft: 10, marginBottom: 10 }}
+          />
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body
+        style={{ backgroundColor: "lightGreen", textAlign: "center" }}
+      >
+        <h4 style={{ color: "darkGreen", fontSize: "30px" }}>
+          Level 3 Completed !!!
+        </h4>
+        <p style={{ fontSize: "20px" }}>
+          Heartily Congratulations for your first victory. You have successfully
+          learnt to login.
+        </p>
+        <p
+          style={{ fontSize: "20px", textAlign: "center" }}
+          className="fw-bold"
+        >
+          Coins Earned:{" "}
+          <img
+            src={coins}
+            className="coins"
+            alt="coin"
+            style={{ height: "40px" }}
+          />{" "}
+          50 pts
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        {/* <Button onClick={props.onHide}>Close</Button> */}
+        {/* <Link to="/LevelsPage"> */}
+          <button type="button" onClick = {navigateLevelsPage} class="btn btn-danger mx-2">
+            Close
+          </button>
+        {/* </Link> */}
+      </Modal.Footer>
+    </Modal>
+  );
+}
 
 export default function Level3() {
 
@@ -54,9 +128,9 @@ export default function Level3() {
   const location = useLocation();
   let phone = location.state.phone;
 
-    const navigateLevelsPage = () => {
-          navigate('/LevelsPage',{state: {phone:phone,beneficiaryaccountnumber:level3.beneficiaryaccountnumber,branch:level3.branch}});
-        }
+    // const navigateLevelsPage = () => {
+    //       navigate('/LevelsPage',{state: {phone:phone,beneficiaryaccountnumber:level3.beneficiaryaccountnumber,branch:level3.branch}});
+    //     }
   const PostData = async (e) => {
     const { name, accountnumber, beneficiaryaccountnumber, branch } =
       level3;
@@ -86,6 +160,20 @@ export default function Level3() {
 
       // navigate("/Levelspage");
     }
+  };
+
+  const [modalShow, setModalShow] = React.useState(false);
+  const [points, setPoints] = useState(null);
+
+  const updatePoints = async () => {
+    const response = await fetch('updatepoints', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone })
+    });
+
+    const data = await response.json();
+    setPoints(data.points);
   };
 
   
@@ -248,7 +336,17 @@ export default function Level3() {
           </div>
           <div className="list8">
             <ul>
-              <li><button className='button-87' onClick={navigateLevelsPage}><b>Submit</b></button></li>
+              <li><button className='button-87' onClick={()=>{updatePoints();
+                setModalShow(true) ; 
+                audio5.loop = false; 
+                audio5.play();}}><b>Submit</b></button>
+                <MyVerticallyCenteredModal 
+                  phone = {phone}
+                  beneficiaryaccountnumber = {level3.beneficiaryaccountnumber}
+                  branch = {level3.branch}
+                  show={modalShow}
+                  // onHide={() => setModalShow(false)}
+                /></li>
               <li><button className='button-87'><b>Cancel</b></button></li>
             </ul>
           </div>

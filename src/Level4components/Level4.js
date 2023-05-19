@@ -16,10 +16,14 @@ import Button from "react-bootstrap/Button";
 import bounceArrow from './bounce_arrow.png';
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
 
 
 function MyVerticallyCenteredModal(props) {
+  const navigate = useNavigate()
+  const navigateLevelsPage = () => {
+    navigate('/LevelsPage',{state: {phone:props.phone}});
+  }
   return (
     <Modal
       {...props}
@@ -54,11 +58,11 @@ function MyVerticallyCenteredModal(props) {
         style={{ backgroundColor: "lightGreen", textAlign: "center" }}
       >
         <h4 style={{ color: "darkGreen", fontSize: "30px" }}>
-          Level 2 Completed !!!
+          Level 4 Completed !!!
         </h4>
         <p style={{ fontSize: "20px" }}>
           Heartily Congratulations for your first victory. You have successfully
-          learnt to perform quick transfer.
+          learnt to login.
         </p>
         <p
           style={{ fontSize: "20px", textAlign: "center" }}
@@ -71,21 +75,20 @@ function MyVerticallyCenteredModal(props) {
             alt="coin"
             style={{ height: "40px" }}
           />{" "}
-          20 pts
+          50 pts
         </p>
       </Modal.Body>
       <Modal.Footer>
         {/* <Button onClick={props.onHide}>Close</Button> */}
-        <Link to="/LevelsPage">
-          <button type="button" class="btn btn-danger mx-2">
+        {/* <Link to="/LevelsPage"> */}
+          <button type="button" onClick = {navigateLevelsPage} class="btn btn-danger mx-2">
             Close
           </button>
-        </Link>
+        {/* </Link> */}
       </Modal.Footer>
     </Modal>
   );
 }
-
 
 export default function QuickTransfer() {
   const audio5 = new Audio(L2_completedaudio);
@@ -98,6 +101,19 @@ export default function QuickTransfer() {
   const navigateLevelsPage = () => {
     navigate('/LevelsPage',{state: {phone:phone}});
   }
+
+  const [points, setPoints] = useState(null);
+
+  const updatePoints = async () => {
+    const response = await fetch('updatepoints', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone })
+    });
+
+    const data = await response.json();
+    setPoints(data.points);
+  };
 
   return (
     <div id="QuickTransfer">
@@ -311,15 +327,19 @@ export default function QuickTransfer() {
                 style={{ width: "100px", marginRight: "10px" }}
                 onClick={(e) => {
                   window.alert("Successful Transfer to a beneficiary");
-                  navigateLevelsPage();
+                  updatePoints();
+                setModalShow(true) ; 
+                audio5.loop = false; 
+                audio5.play();
                 }}
               >
                 Submit
               </Button>
-              <MyVerticallyCenteredModal
-                show={modalShow}
-                // onHide={() => setModalShow(false)}
-              />
+              <MyVerticallyCenteredModal 
+                  phone = {phone}
+                  show={modalShow}
+                  // onHide={() => setModalShow(false)}
+                />
             </li>
             <li>
               <button className="button-87">
